@@ -38,9 +38,9 @@
 	setMapEvent();
 	addMapControl();
         var img_bike = new Image();
-        img_bike.src = '../img/bikef.png';
+        img_bike.src = 'img/bikef.png';
 	
-	$.get('../data/g318.geojson', function(geojson) {
+	$.get('data/g318.geojson', function(geojson) {
 	
 		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
 		console.log(geojsonDataSet);
@@ -66,9 +66,9 @@
 		var mapvLayer = new mapv.baiduMapLayer(map, rb_dataSet, rbOptions);
 	});
 	var img_go = new Image();
-        img_go.src = '../img/Mario.png';
+        img_go.src = 'img/Mario.png';
 	
-	$.get('../data/go.geojson', function(geojson) {
+	$.get('data/go.geojson', function(geojson) {
 	
 		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
 		console.log(geojsonDataSet);
