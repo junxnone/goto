@@ -1,22 +1,96 @@
-<!doctype html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-{% seo %}
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-  </head>
-  <body>
-
-    <script src="https://embed.github.com/view/geojson/junxnone/goto/master/go.geojson?height=900&width=1600"></script>
-
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
+	<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://mapv.baidu.com/build/mapv.min.js"></script>
+	<title>geo point read</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
 </html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	var point = new BMap.Point(110, 31);
+	map.centerAndZoom(point, 6);
+		function setMapEvent(){
+		map.enableScrollWheelZoom();
+		map.enableKeyboard();
+		map.enableDragging();
+		map.enableDoubleClickZoom()
+	}
+	function addMapControl(){
+		var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+		scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+		map.addControl(scaleControl);
+		var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+		map.addControl(navControl);
+		var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+		map.addControl(overviewControl);
+	}
+	setMapEvent();
+	addMapControl();
+        var img_bike = new Image();
+        img_bike.src = '../img/bikef.png';
+	
+	$.get('../data/g318.geojson', function(geojson) {
+	
+		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+		console.log(geojsonDataSet);
+		var data = [];
+		var darray = geojsonDataSet._data
+		var data_len = darray.length
+		while(data_len--){
+			data.push({
+				geometry: {
+					type: 'Point',
+					coordinates: [darray[data_len].geometry.coordinates[0], darray[data_len].geometry.coordinates[1]]
+				},
+				deg: 0,
+				icon: img_bike
+			});
+			
+		}
+		var rb_dataSet = new mapv.DataSet(data)
+		var rbOptions = {
+			draw: 'icon'
+		}
+		
+		var mapvLayer = new mapv.baiduMapLayer(map, rb_dataSet, rbOptions);
+	});
+	var img_go = new Image();
+        img_go.src = '../img/Mario.png';
+	
+	$.get('../data/go.geojson', function(geojson) {
+	
+		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+		console.log(geojsonDataSet);
+		var data = [];
+		var darray = geojsonDataSet._data
+		var data_len = darray.length
+		while(data_len--){
+			data.push({
+				geometry: {
+					type: 'Point',
+					coordinates: [darray[data_len].geometry.coordinates[0], darray[data_len].geometry.coordinates[1]]
+				},
+				deg: 0,
+				icon: img_go
+			});
+			
+		}
+		var rb_dataSet = new mapv.DataSet(data)
+		var rbOptions = {
+			draw: 'icon'
+		}
+		
+		var mapvLayer = new mapv.baiduMapLayer(map, rb_dataSet, rbOptions);
+	});
+</script>
