@@ -9,7 +9,6 @@
 	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
 	<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://mapv.baidu.com/build/mapv.min.js"></script>
-	<script src="https://unpkg.com/gcoord/dist/gcoord.js"></script>
 	<title>世界这么大 我们去看看</title>
 </head>
 <body>
@@ -38,7 +37,34 @@
 	}
 	setMapEvent();
 	addMapControl();
+        var img_bike = new Image();
+        img_bike.src = 'img/bikef.png';
 	
+	$.get('data/g318.geojson', function(geojson) {
+	
+		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+		console.log(geojsonDataSet);
+		var data = [];
+		var darray = geojsonDataSet._data
+		var data_len = darray.length
+		while(data_len--){
+			data.push({
+				geometry: {
+					type: 'Point',
+					coordinates: [darray[data_len].geometry.coordinates[0], darray[data_len].geometry.coordinates[1]]
+				},
+				deg: 0,
+				icon: img_bike
+			});
+			
+		}
+		var rb_dataSet = new mapv.DataSet(data)
+		var rbOptions = {
+			draw: 'icon'
+		}
+		
+		var mapvLayer = new mapv.baiduMapLayer(map, rb_dataSet, rbOptions);
+	});
 	var img_go = new Image();
         img_go.src = 'img/xzrs.png';
 	
@@ -67,65 +93,4 @@
 		
 		var mapvLayer = new mapv.baiduMapLayer(map, rb_dataSet, rbOptions);
 	});
-	var bkIcon = new BMap.Icon("./img/bikef.png", new BMap.Size(30, 30), {    //小车图片
-		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
-		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
-	});
-	var pts = []
-	$.get('data/g318.geojson', function(geojson) {
-	
-		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
-		darray = geojsonDataSet._data
-		var data_len = darray.length
-		for (var j = 0; j < data_len; j++) {
-			var result = gcoord.transform(
-				[darray[j].geometry.coordinates[0],  darray[j].geometry.coordinates[1]],    // 经纬度坐标
-				gcoord.WGS84,               // 当前坐标系
-				gcoord.BD09                 // 目标坐标系
-			);	
-		
-			var pt = new BMap.Point(result[0], result[1]);
-			pts.push(pt);
-		}
-	});
-	function track_1(t){
-		var carMk1 = new BMap.Marker(pts[0], {
-			icon: bkIcon
-		});
-		map.addOverlay(carMk1);
-		var paths1 = pts.length; //获得有几个点
-		var polyline1 = new BMap.Polyline(pts, {
-		    strokeColor: "blue",
-		    strokeWeight: 2,
-		    strokeOpacity: 0.5
-		}); //创建折线
-
-		map.addOverlay(polyline1); //增加折线
-		i = 0;
-		function resetMkPoint(i) {
-		    carMk1.setPosition(pts[i]);
-		    if (i < paths1) {
-			setTimeout(function () {
-			    i++;
-			    resetMkPoint(i);
-			}, 100);
-		    }
-		}
-		setTimeout(function () {
-		    resetMkPoint(5);
-		}, 100)
-		setTimeout(function () {
-			map.removeOverlay(carMk1);
-		},5000)
-	}
-	function run_track(){
-		track_1(0);
-	}
-	window.run = function () {
-		run_track();
-	}
-
-	setTimeout(function () {
-		run();
-	}, 1500);
 </script>
