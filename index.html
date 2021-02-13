@@ -71,7 +71,7 @@
 		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
 	});
 	var pts = []
-	$.get('../data/g318.geojson', function(geojson) {
+	$.get('data/g318.geojson', function(geojson) {
 	
 		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
 		darray = geojsonDataSet._data
