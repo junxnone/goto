@@ -459,7 +459,8 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#71e821"
+        "marker-color": "#71e821",
+        "marker-size": ""
       },
       "geometry": {
         "type": "Point",
@@ -885,42 +886,17 @@
         ]
       }
     },
+
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#71e821"
+        "marker-color": "#710321"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           94.36088562011719,
           29.64509464986076
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#71e821"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.35862731933592,
-          29.816816857649936
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#71e821"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          93.24817657470702,
-          29.885750787841193
         ]
       }
     },
@@ -945,6 +921,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          93.24817657470702,
+          29.885750787841193
+        ]
+      }
+    },    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#71e821"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           93.8455581665039,
           29.795069725346764
         ]
@@ -958,11 +946,11 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          91.1260986328125,
-          29.654642479663647
+          92.35862731933592,
+          29.816816857649936
         ]
       }
-    },
+    },    
     {
       "type": "Feature",
       "properties": {
@@ -975,6 +963,19 @@
         "coordinates": [
           91.73463821411133,
           29.841388403349136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#71e821"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.1260986328125,
+          29.654642479663647
         ]
       }
     }
