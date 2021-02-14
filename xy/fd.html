@@ -92,12 +92,13 @@
 		darray = geojsonDataSet._data
 		var data_len = darray.length
 		for (var j = 0; j < data_len; j++) {
-			var result = gcoord.transform(
-				[darray[j].geometry.coordinates[0],  darray[j].geometry.coordinates[1]],    // 经纬度坐标
-				gcoord.WGS84,               // 当前坐标系
-				gcoord.BD09                 // 目标坐标系
-			);
-			var pt = new BMap.Point(result[0], result[1]);
+// 			var result = gcoord.transform(
+// 				[darray[j].geometry.coordinates[0],  darray[j].geometry.coordinates[1]],    // 经纬度坐标
+// 				gcoord.WGS84,               // 当前坐标系
+// 				gcoord.BD09                 // 目标坐标系
+// 			);
+// 			var pt = new BMap.Point(result[0], result[1]);
+			var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
 			pts3.push(pt);
 		}
 	});
