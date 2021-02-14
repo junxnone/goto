@@ -187,7 +187,9 @@
 			setTimeout(function () {
 			    i++;
 			    resetMkPoint(i);
-			}, 200);
+			}, 100);
+		    } else {
+		    	map.centerAndZoom(pts3[i-1], 18);
 		    }
 		}
 		setTimeout(function () {
