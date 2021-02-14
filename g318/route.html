@@ -84,7 +84,10 @@
 						i++;
 						resetMkPoint(i);
 					},1);
+				} else {
+					track_n(n+1, ptsn);
 				}
+				
 			}
 			setTimeout(function(){
 				resetMkPoint(0);
@@ -94,19 +97,20 @@
 
 	function run_track(){
 		var n = 0;
-		function resettrack(n){
-			track_n(n, pts);
-			console.log(pts.length)
-			if(n < pts.length){
-				setTimeout(function(){
-					n++;
-					resettrack(n);
-				},3000);
-			}
-		}
-		setTimeout(function(){
-			resettrack(0);
-		},3000)
+		track_n(n, pts);
+// 		function resettrack(n){
+// 			track_n(n, pts);
+// 			console.log(pts.length)
+// 			if(n < pts.length){
+// 				setTimeout(function(){
+// 					n++;
+// 					resettrack(n);
+// 				},3000);
+// 			}
+// 		}
+// 		setTimeout(function(){
+// 			resettrack(0);
+// 		},3000)
   	}
 	window.run = function () {
 		run_track();
