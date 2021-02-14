@@ -66,7 +66,6 @@
 		console.log(ptsn)
 		myP1 = ptsn[n];
 		myP2 = ptsn[n+1];
-		map.centerAndZoom(myP1, 10);
 
 		var driving = new BMap.DrivingRoute(map);    //驾车实例
 		driving.search(myP1, myP2);
@@ -78,6 +77,7 @@
 			map.addOverlay(carMk);
 			i=0;
 			function resetMkPoint(i){
+				map.centerAndZoom(pts[i], 10);
 				carMk.setPosition(pts[i]);
 				if(i < paths){
 					setTimeout(function(){
