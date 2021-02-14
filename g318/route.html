@@ -21,7 +21,7 @@
 	var map = new BMap.Map("allmap");
 	var point = new BMap.Point(110, 31);
 	map.centerAndZoom(point, 6);
-		function setMapEvent(){
+	function setMapEvent(){
 		map.enableScrollWheelZoom();
 		map.enableKeyboard();
 		map.enableDragging();
@@ -66,6 +66,7 @@
 		console.log(ptsn)
 		myP1 = ptsn[n];
 		myP2 = ptsn[n+1];
+		map.centerAndZoom(myP1, 10);
 
 		var driving = new BMap.DrivingRoute(map);    //驾车实例
 		driving.search(myP1, myP2);
