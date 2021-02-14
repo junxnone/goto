@@ -60,14 +60,14 @@
 			pts.push(pt);
 		}
 	});
+	var pts_len = pts.length
+	function track_n(n,ptsn){
+		console.log(n)
+		console.log(ptsn)
+		myP1 = ptsn[n];
+		myP2 = ptsn[n+1];
 
-  function track_n(n,ptsn){
-    console.log(n)
-    console.log(ptsn)
-    myP1 = ptsn[n];
-    myP2 = ptsn[n+1];
-
-    var driving = new BMap.DrivingRoute(map);    //驾车实例
+		var driving = new BMap.DrivingRoute(map);    //驾车实例
 		driving.search(myP1, myP2);
 		driving.setSearchCompleteCallback(function(){
 			var pts = driving.getResults().getPlan(0).getRoute(0).getPath();    //通过驾车实例，获得一系列点的数组
@@ -89,15 +89,23 @@
 				resetMkPoint(5);
 			},100)
 		});
-  }
+	}
 
 	function run_track(){
-     var posn = 0;
-    setTimeout(function(){
-      track_n(posn, pts);
-      posn++;
-    },2000)
-  }
+		var n = 0;
+		function resettrack(n){
+			track_n(n, pts);
+			if(n < pts_len){
+				setTimeout(function(){
+					n++;
+					resettrack(n);
+				},1000);
+			}
+		}
+		setTimeout(function(){
+			resettrack(5);
+		},1000)
+  	}
 	window.run = function () {
 		run_track();
 	}
