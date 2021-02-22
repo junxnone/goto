@@ -69,7 +69,7 @@
 	});
 	console.log(pts);
 	var pts2 = []
-	$.get('../data/3d.geojson', function(geojson) {
+	$.get('../data/sd2.geojson', function(geojson) {
 	
 		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
 		darray = geojsonDataSet._data
@@ -86,7 +86,7 @@
 	});
 	console.log(pts2);
 	var pts3 = []
-	$.get('../data/sd3.geojson', function(geojson) {
+	$.get('../data/3d.geojson', function(geojson) {
 	
 		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
 		darray = geojsonDataSet._data
@@ -154,7 +154,7 @@
 			setTimeout(function () {
 			    i++;
 			    resetMkPoint(i);
-			}, 400);
+			}, 200);
 		    } 
 		}
 		setTimeout(function () {
@@ -187,7 +187,7 @@
 			setTimeout(function () {
 			    i++;
 			    resetMkPoint(i);
-			}, 100);
+			}, 50);
 		    } else {
 		    	map.centerAndZoom(pts3[i-1], 18);
 		    }
