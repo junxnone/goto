@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
+	<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://mapv.baidu.com/build/mapv.min.js"></script>
+	<script src="../js/gcoord.js"></script>
+	<title>Second Date</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(121.422,30.993), 14);
+	function setMapEvent(){
+		map.enableScrollWheelZoom();
+		map.enableKeyboard();
+		map.enableDragging();
+		map.enableDoubleClickZoom()
+	}
+	function addMapControl(){
+		var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+		scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+		map.addControl(scaleControl);
+		var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+		map.addControl(navControl);
+		var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+		map.addControl(overviewControl);
+	}
+	setMapEvent();
+	addMapControl();
+
+	var xzIcon = new BMap.Icon("../img/xzrs.png", new BMap.Size(30, 30), {    //小车图片
+		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
+		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+	});
+	var yzIcon = new BMap.Icon("../img/yzrs.png", new BMap.Size(30, 30), {    //小车图片
+		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
+		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+	});
+	var xzyzIcon = new BMap.Icon("../img/xzyz.png", new BMap.Size(45, 30), {    //小车图片
+		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
+		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+	});
+	var pts = []
+	$.get('../data/sd1.geojson', function(geojson) {
+	
+		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+		darray = geojsonDataSet._data
+		var data_len = darray.length
+		for (var j = 0; j < data_len; j++) {
+			var result = gcoord.transform(
+				[darray[j].geometry.coordinates[0],  darray[j].geometry.coordinates[1]],    // 经纬度坐标
+				gcoord.WGS84,               // 当前坐标系
+				gcoord.BD09                 // 目标坐标系
+			);	
+		
+			var pt = new BMap.Point(result[0], result[1]);
+			pts.push(pt);
+		}
+	});
+	console.log(pts);
+	var pts2 = []
+	$.get('../data/3d.geojson', function(geojson) {
+	
+		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+		darray = geojsonDataSet._data
+		var data_len = darray.length
+		for (var j = 0; j < data_len; j++) {
+			var result = gcoord.transform(
+				[darray[j].geometry.coordinates[0],  darray[j].geometry.coordinates[1]],    // 经纬度坐标
+				gcoord.WGS84,               // 当前坐标系
+				gcoord.BD09                 // 目标坐标系
+			);
+			var pt = new BMap.Point(result[0], result[1]);
+			pts2.push(pt);
+		}
+	});
+	console.log(pts2);
+	var pts3 = []
+	$.get('../data/sd3.geojson', function(geojson) {
+	
+		var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+		darray = geojsonDataSet._data
+		var data_len = darray.length
+		for (var j = 0; j < data_len; j++) {
+// 			var result = gcoord.transform(
+// 				[darray[j].geometry.coordinates[0],  darray[j].geometry.coordinates[1]],    // 经纬度坐标
+// 				gcoord.WGS84,               // 当前坐标系
+// 				gcoord.BD09                 // 目标坐标系
+// 			);
+// 			var pt = new BMap.Point(result[0], result[1]);
+			var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
+			pts3.push(pt);
+		}
+	});
+	console.log(pts2);
+
+	function track_1(t){
+		var carMk1 = new BMap.Marker(pts[0], {
+			icon: xzIcon
+		});
+		map.addOverlay(carMk1);
+		var paths1 = pts.length; //获得有几个点
+		var polyline1 = new BMap.Polyline(pts, {
+		    strokeColor: "blue",
+		    strokeWeight: 2,
+		    strokeOpacity: 0.5
+		}); //创建折线
+
+		map.addOverlay(polyline1); //增加折线
+		i = 0;
+		function resetMkPoint(i) {
+		    map.centerAndZoom(pts[i], 14);
+		    carMk1.setPosition(pts[i]);
+		    if (i < paths1) {
+			setTimeout(function () {
+			    i++;
+			    resetMkPoint(i);
+			}, 100);
+		    }
+		}
+		setTimeout(function () {
+		    resetMkPoint(1);
+		}, 100)
+		setTimeout(function () {
+			map.removeOverlay(carMk1);
+		},5000)
+	}
+	function track_2(t){
+		var carMk2 = new BMap.Marker(pts2[0], {
+		  icon: yzIcon
+		});
+		map.addOverlay(carMk2);
+		var paths2 = pts2.length; //获得有几个点
+		var polyline2 = new BMap.Polyline(pts2, {
+		    strokeColor: "blue",
+		    strokeWeight: 2,
+		    strokeOpacity: 0.5
+		}); //创建折线
+		map.addOverlay(polyline2); //增加折线
+		i = 0;
+		function resetMkPoint(i) {
+		    carMk2.setPosition(pts2[i]);
+		    if (i < paths2) {
+			setTimeout(function () {
+			    i++;
+			    resetMkPoint(i);
+			}, 400);
+		    } 
+		}
+		setTimeout(function () {
+		    resetMkPoint(1);
+		}, 100)
+		setTimeout(function () {
+			map.removeOverlay(carMk2);
+		},4000)
+
+	}
+	function track_3(t){
+		var paths = pts3.length; //获得有几个点
+		var polyline = new BMap.Polyline(pts3, {
+		    strokeColor: "blue",
+		    strokeWeight: 2,
+		    strokeOpacity: 0.5
+		}); //创建折线
+		map.addOverlay(polyline); //增加折线
+
+		var carMk = new BMap.Marker(pts3[0], {
+		    icon: xzyzIcon
+		});
+		map.addOverlay(carMk);
+		i = 0;
+
+		function resetMkPoint(i) {
+		    map.centerAndZoom(pts3[i], 15);
+		    carMk.setPosition(pts3[i]);
+		    if (i < paths) {
+			setTimeout(function () {
+			    i++;
+			    resetMkPoint(i);
+			}, 100);
+		    } else {
+		    	map.centerAndZoom(pts3[i-1], 18);
+		    }
+		}
+		setTimeout(function () {
+		    resetMkPoint(1);
+		}, 100)
+
+	}
+
+	function run_track(){
+		track_1(0);
+		setTimeout(function () {
+			track_2(0);
+		},1000)	
+		setTimeout(function () {
+			track_3(0);
+		},5000)
+	}
+	window.run = function () {
+		run_track();
+	}
+
+	setTimeout(function () {
+		run();
+	}, 1500);
+</script>
