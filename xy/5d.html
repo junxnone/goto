@@ -95,7 +95,7 @@
 		var data_len = darray.length
 		for (var j = 0; j < data_len; j++) {
 			var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
-			pts3.push(pt);
+			pts4.push(pt);
 		}
 	});
   console.log(pts4);
@@ -108,7 +108,7 @@
 		var data_len = darray.length
 		for (var j = 0; j < data_len; j++) {
 			var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
-			pts3.push(pt);
+			pts5.push(pt);
 		}
 	});
 	console.log(pts5);
@@ -127,7 +127,7 @@
 		map.addOverlay(polyline1); //增加折线
 		i = 0;
 		function resetMkPoint(i) {
-		    map.centerAndZoom(pts[i], 14);
+		    map.centerAndZoom(pts[i], 13);
 		    carMk1.setPosition(pts[i]);
 		    if (i < paths1) {
 			setTimeout(function () {
