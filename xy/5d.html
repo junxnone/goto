@@ -141,7 +141,7 @@
 		}, 100)
 		setTimeout(function () {
 			map.removeOverlay(carMk1);
-		},5000)
+		},6000)
 	}
 	function track_2(t){
 		var carMk2 = new BMap.Marker(pts2[0], {
@@ -187,7 +187,7 @@
 		map.addOverlay(polyline3); //增加折线
 		i = 0;
 		function resetMkPoint(i) {
-	            map.centerAndZoom(pts3[i], 15);
+	            map.centerAndZoom(pts3[i], 16);
 		    carMk3.setPosition(pts3[i]);
 		    if (i < paths3) {
 			setTimeout(function () {
@@ -218,7 +218,7 @@
 		map.addOverlay(polyline4); //增加折线
 		i = 0;
 		function resetMkPoint(i) {
-		    map.centerAndZoom(pts4[i], 15);
+		    map.centerAndZoom(pts4[i], 16);
 		    carMk4.setPosition(pts4[i]);
 		    if (i < paths4) {
 			setTimeout(function () {
