@@ -58,7 +58,7 @@
 		var data_len = darray.length
 		for (var j = 0; j < data_len; j++) {
 			var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
-			pts3.push(pt);
+			pts.push(pt);
 		}
 	});
 	console.log(pts);
@@ -70,7 +70,7 @@
 		var data_len = darray.length
 		for (var j = 0; j < data_len; j++) {
 			var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
-			pts3.push(pt);
+			pts2.push(pt);
 		}
 	});
 	console.log(pts2);
