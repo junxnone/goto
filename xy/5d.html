@@ -114,7 +114,7 @@
 	console.log(pts5);
 	function track_1(t){
 		var carMk1 = new BMap.Marker(pts[0], {
-			icon: xzIcon
+			icon: yzIcon
 		});
 		map.addOverlay(carMk1);
 		var paths1 = pts.length; //获得有几个点
@@ -145,7 +145,7 @@
 	}
 	function track_2(t){
 		var carMk2 = new BMap.Marker(pts2[0], {
-		  icon: yzIcon
+		  icon: xzIcon
 		});
 		map.addOverlay(carMk2);
 		var paths2 = pts2.length; //获得有几个点
@@ -270,7 +270,7 @@
 		track_1(0);
 		setTimeout(function () {
 			track_2(0);
-		},1000)	
+		},2000)	
 		setTimeout(function () {
 			track_3(0);
 		},5000)
