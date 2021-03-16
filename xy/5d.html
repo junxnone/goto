@@ -175,7 +175,7 @@
 	}
 	function track_3(t){
 		var carMk3 = new BMap.Marker(pts3[0], {
-		  icon: yzIcon
+		  icon: xzyzIcon
 		});
 		map.addOverlay(carMk3);
 		var paths3 = pts3.length; //获得有几个点
@@ -187,6 +187,7 @@
 		map.addOverlay(polyline3); //增加折线
 		i = 0;
 		function resetMkPoint(i) {
+	            map.centerAndZoom(pts3[i], 14);
 		    carMk3.setPosition(pts3[i]);
 		    if (i < paths3) {
 			setTimeout(function () {
@@ -205,7 +206,7 @@
 	}
   function track_4(t){
 		var carMk4 = new BMap.Marker(pts4[0], {
-		  icon: yzIcon
+		  icon: xzyzIcon
 		});
 		map.addOverlay(carMk4);
 		var paths4 = pts4.length; //获得有几个点
@@ -217,6 +218,7 @@
 		map.addOverlay(polyline4); //增加折线
 		i = 0;
 		function resetMkPoint(i) {
+		    map.centerAndZoom(pts4[i], 14);
 		    carMk4.setPosition(pts4[i]);
 		    if (i < paths4) {
 			setTimeout(function () {
