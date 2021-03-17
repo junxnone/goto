@@ -48,7 +48,7 @@
 		console.log(pts);
 		return pts
 	}
-	function track_n(ptsn, cion, zoom_level, remove_time){
+	function track_n(ptsn, cion, zoom_level, p_time, remove_time){
 		var carMk = new BMap.Marker(ptsn[0], {
 			icon: cion
 		});
@@ -74,7 +74,7 @@
 		}
 		setTimeout(function () {
 		    resetMkPoint(1);
-		}, 100)
+		}, p_time)
 		setTimeout(function () {
 			map.removeOverlay(carMk);
 		},remove_time)
@@ -105,8 +105,8 @@
 
 
 	function run_track(){
-		track_n(pts1, junIcon, 14, 10000);
-		setTimeout(function () { track_n(pts2, minIcon, 14, 5000 );}, 8000);
+		track_n(pts1, junIcon, 14, 50, 10000);
+		setTimeout(function () { track_n(pts2, minIcon, 14, 100, 5000);}, 8000);
 	}
 	window.run = function () {
 		run_track();
