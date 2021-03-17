@@ -104,7 +104,8 @@
 	});
 
 	function get_ot(ptsx, ptime){
-		return ptsx.length * 2 * ptime + 1000
+		otime = ptsx.length * 2 * ptime + 1000
+		return otime
 	}
 	ot1 = get_ot(pts1, 50)
 	ot2 = get_ot(pts2, 100) + ot1
