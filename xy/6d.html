@@ -133,6 +133,7 @@
 		map.addOverlay(polyline2); //增加折线
 		i = 0;
 		function resetMkPoint(i) {
+		    map.centerAndZoom(pts2[i], 16);
 		    carMk2.setPosition(pts2[i]);
 		    if (i < paths2) {
 			setTimeout(function () {
@@ -190,7 +191,7 @@
 		},5000)	
 		setTimeout(function () {
 			track_e(0);
-		},12000)
+		},8000)
 	}
 	window.run = function () {
 		run_track();
