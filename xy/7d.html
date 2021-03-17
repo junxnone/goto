@@ -50,7 +50,7 @@
 		console.log(pts);
 		return pts
 	}
-	function track_n(ptsn, cion, zoom_level, p_time, remove_time){
+	function track_n(ptsn, cion, zoom_level, p_time, sp){
 		var carMk = new BMap.Marker(ptsn[0], {
 			icon: cion
 		});
@@ -65,7 +65,9 @@
 		map.addOverlay(polyline); //增加折线
 		i = 0;
 		function resetMkPoint(i) {
-		    map.centerAndZoom(ptsn[i], zoom_level);
+		    if (sp == 1) {
+		    	map.centerAndZoom(ptsn[i], zoom_level);
+		    }
 		    carMk.setPosition(ptsn[i]);
 		    if (i < paths) {
 			setTimeout(function () {
@@ -101,15 +103,22 @@
 		imageOffset: new BMap.Size(0, 0) 
 	});
 
-
-
+	function get_ot(ptsx, ptime){
+		return ptsx * ptime + 1000
+	}
+	ot1 = get_ot(pts1, 50)
+	ot2 = get_ot(pts2, 100) + ot1
+	ot3 = get_ot(pts3, 100) + ot2
+	ot4 = get_ot(pts4, 100) + ot3
+	ot5 = get_ot(pts5, 100) + ot4
+	
 	function run_track(){
-		track_n(pts1, junIcon, 15, 50, 10000);
-		setTimeout(function () { track_n(pts2, minIcon, 15, 100, 4000);}, 6000);
-		setTimeout(function () { track_n(pts3, lvIcon, 15, 100, 5000);}, 10000);
-		setTimeout(function () { track_n(pts4, lvIcon, 15, 100, 10000);}, 20000);
-		setTimeout(function () { track_n(pts5, lvIcon, 15, 100, 10000);}, 30000);
-		setTimeout(function () { track_n(pts6, lvIcon, 15, 100, 10000);}, 40000);
+		track_n(pts1, junIcon, 15, 50, 1);
+		setTimeout(function () { track_n(pts2, minIcon, 15, 100, 0);}, ot1);
+		setTimeout(function () { track_n(pts3, lvIcon, 15, 100, 1);}, ot2);
+		setTimeout(function () { track_n(pts4, lvIcon, 15, 100, 1);}, ot3);
+		setTimeout(function () { track_n(pts5, lvIcon, 15, 100, 1);}, ot4);
+		setTimeout(function () { track_n(pts6, lvIcon, 15, 100, 1);}, ot5);
 
 	}
 	window.run = function () {
