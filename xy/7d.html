@@ -79,8 +79,8 @@
 			map.removeOverlay(carMk);
 		},remove_time)
 	}
-	pts1 = get_pts('../data/sd1.geojson')
-  	pts2 = get_pts('../data/sd2.geojson')
+	pts1 = get_pts('../data/prejun.geojson')
+  	pts2 = get_pts('../data/premin.geojson')
 	pts3 = get_pts('../data/7d1.geojson')
 	pts4 = get_pts('../data/7d2.geojson')
 	pts5 = get_pts('../data/7d3.geojson')
@@ -102,7 +102,8 @@
 	addMapControl();
 
 	function run_track(){
-		track_n(pts1, junIcon, 14, 10000);
+		track_n(pts1, junIcon, 14, 3000);
+		setTimeout(function () { track_n(pts2, minIcon, 14, 2000 );}, 3000);
 	}
 	window.run = function () {
 		run_track();
