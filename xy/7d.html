@@ -79,12 +79,13 @@
 			map.removeOverlay(carMk);
 		},remove_time)
 	}
+	pts1 = get_pts('../data/sd1.geojson')
+  	pts2 = get_pts('../data/sd2.geojson')
+	pts3 = get_pts('../data/7d1.geojson')
+	pts4 = get_pts('../data/7d2.geojson')
+	pts5 = get_pts('../data/7d3.geojson')
+	pts6 = get_pts('../data/7d4.geojson')
 	
-	var map = new BMap.Map("allmap");
-	map.centerAndZoom(new BMap.Point(121.422,30.993), 13);
-	setMapEvent();
-	addMapControl();
-
 	var junIcon = new BMap.Icon("../img/xzrs.png", new BMap.Size(30, 30), {
 		imageOffset: new BMap.Size(0, 0)
 	});
@@ -95,10 +96,10 @@
 		imageOffset: new BMap.Size(0, 0) 
 	});
 
-	pts1 = get_pts('../data/7d1.geojson')
-	pts2 = get_pts('../data/7d2.geojson')
-	pts3 = get_pts('../data/7d3.geojson')
-	pts4 = get_pts('../data/7d4.geojson')
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(pts1[0], 13);
+	setMapEvent();
+	addMapControl();
 
 	function run_track(){
 		track_n(pts1, junIcon, 14, 10000);
