@@ -50,7 +50,7 @@
 		console.log(pts);
 		return pts
 	}
-	function track_n(ptsn, cion, zoom_level, p_time, sp, rmp = 1){
+	function track_n(ptsn, cion, zoom_level, p_time, sp=1, rmp = 1){
 		var carMk = new BMap.Marker(ptsn[0], {
 			icon: cion
 		});
@@ -119,12 +119,12 @@
 		var ot4 = get_ot(pts4, 100) + ot3;
 		var ot5 = get_ot(pts5, 100) + ot4;
 		
-		track_n(pts1, junIcon, 15, 50, 1);
-		setTimeout(function () { track_n(pts2, minIcon, 15, 100, 0);}, ot1 - 1000);
-		setTimeout(function () { track_n(pts3, lvIcon, 15, 100, 1);}, ot2);
-		setTimeout(function () { track_n(pts4, lvIcon, 15, 100, 1);}, ot3);
-		setTimeout(function () { track_n(pts5, lvIcon, 15, 100, 1);}, ot4);
-		setTimeout(function () { track_n(pts6, lvIcon, 15, 100, 1, 0);}, ot5);
+		track_n(pts1, junIcon, 15, 50);
+		setTimeout(function () { track_n(pts2, minIcon, 15, 100, sp=0);}, ot1 - 2000);
+		setTimeout(function () { track_n(pts3, lvIcon, 15, 100);}, ot2);
+		setTimeout(function () { track_n(pts4, lvIcon, 15, 100);}, ot3);
+		setTimeout(function () { track_n(pts5, lvIcon, 15, 100);}, ot4);
+		setTimeout(function () { track_n(pts6, lvIcon, 15, 100, sp=1, rmp=0);}, ot5);
 
 	}
 	window.run = function () {
