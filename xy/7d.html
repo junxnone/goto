@@ -73,9 +73,9 @@
   pts4 = get_pts('../data/7d4.geojson')
  
 
-	function track_n(ptsn, zoom_level, remove_time){
+	function track_n(ptsn, cion, zoom_level, remove_time){
 		var carMk = new BMap.Marker(ptsn[0], {
-			icon: yzIcon
+			icon: cion
 		});
 		map.addOverlay(carMk);
 		var paths = ptsn.length; //获得有几个点
@@ -107,7 +107,7 @@
 
 
 	function run_track(){
-		track_n(pts1, 14, 10000);
+		track_n(pts1, junIcon, 14, 10000);
 	}
 	window.run = function () {
 		run_track();
