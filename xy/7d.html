@@ -113,14 +113,14 @@
 
 	
 	function run_track(){
-		var ot1 = get_ot(pts1, 50);
+		var ot1 = get_ot(pts1, 50) - 2000;
 		var ot2 = get_ot(pts2, 100) + ot1;
 		var ot3 = get_ot(pts3, 100) + ot2;
 		var ot4 = get_ot(pts4, 100) + ot3;
 		var ot5 = get_ot(pts5, 100) + ot4;
 		
 		track_n(pts1, junIcon, 15, 50);
-		setTimeout(function () { track_n(pts2, minIcon, 15, 100, sp=0);}, ot1 - 2000);
+		setTimeout(function () { track_n(pts2, minIcon, 15, 100, sp=0);}, ot1);
 		setTimeout(function () { track_n(pts3, lvIcon, 15, 100);}, ot2);
 		setTimeout(function () { track_n(pts4, lvIcon, 15, 100);}, ot3);
 		setTimeout(function () { track_n(pts5, lvIcon, 15, 100);}, ot4);
