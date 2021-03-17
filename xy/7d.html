@@ -82,7 +82,7 @@
 		if (rmp == 1) {
 			setTimeout(function () {
 				map.removeOverlay(carMk);
-			}, ptsn.length * (p_time + 40))		    
+			}, ptsn.length * (p_time + 50))		    
 	    	}
 
 	}
@@ -107,7 +107,7 @@
 	});
 
 	function get_ot(ptsx, ptime){
-		var otime = ptsx.length * (ptime + 40);
+		var otime = ptsx.length * (ptime + 50);
 		return otime;
 	}
 
@@ -121,7 +121,7 @@
 		var spts5 = 150
 		var spts6 = 100
 		
-		var ot1 = get_ot(pts1, spts1) - 4000;
+		var ot1 = get_ot(pts1, spts1) - 3500;
 		var ot2 = get_ot(pts2, spts2) + ot1;
 		var ot3 = get_ot(pts3, spts3) + ot2;
 		var ot4 = get_ot(pts4, spts4) + ot3;
