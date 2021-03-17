@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
+	<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://mapv.baidu.com/build/mapv.min.js"></script>
+	<script src="../js/gcoord.js"></script>
+	<title>The 6th Date</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(121.422,30.993), 13);
+	function setMapEvent(){
+		map.enableScrollWheelZoom();
+		map.enableKeyboard();
+		map.enableDragging();
+		map.enableDoubleClickZoom()
+	}
+	function addMapControl(){
+		var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+		scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+		map.addControl(scaleControl);
+		var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+		map.addControl(navControl);
+		var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+		map.addControl(overviewControl);
+	}
+	setMapEvent();
+	addMapControl();
+
+	var junIcon = new BMap.Icon("../img/xzrs.png", new BMap.Size(30, 30), {    //小车图片
+		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
+		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+	});
+	var minIcon = new BMap.Icon("../img/yzrs.png", new BMap.Size(30, 30), {    //小车图片
+		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
+		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+	});
+	var lvIcon = new BMap.Icon("../img/xzyz.png", new BMap.Size(45, 30), {    //小车图片
+		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
+		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+	});
+
+  
+  function get_pts(filename){
+    	var pts = []
+    	$.get(filename, function(geojson) {
+	
+          var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+          darray = geojsonDataSet._data
+          var data_len = darray.length
+          for (var j = 0; j < data_len; j++) {
+            var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
+            pts.push(pt);
+          }
+        });
+        console.log(pts);
+      return pts
+  }
+  pts1 = get_pts('../data/7d1.geojson')
+  pts2 = get_pts('../data/7d2.geojson')
+  pts3 = get_pts('../data/7d3.geojson')
+  pts4 = get_pts('../data/7d4.geojson')
+ 
+
+	function track_n(ptsn, zoom_level, remove_time){
+		var carMk = new BMap.Marker(ptsn[0], {
+			icon: yzIcon
+		});
+		map.addOverlay(carMk);
+		var paths = ptsn.length; //获得有几个点
+		var polyline = new BMap.Polyline(ptsn, {
+		    strokeColor: "blue",
+		    strokeWeight: 2,
+		    strokeOpacity: 0.5
+		}); //创建折线
+
+		map.addOverlay(polyline); //增加折线
+		i = 0;
+		function resetMkPoint(i) {
+		    map.centerAndZoom(ptsn[i], zoom_level);
+		    carMk1.setPosition(ptsn[i]);
+		    if (i < paths) {
+			setTimeout(function () {
+			    i++;
+			    resetMkPoint(i);
+			}, 100);
+		    }
+		}
+		setTimeout(function () {
+		    resetMkPoint(1);
+		}, 100)
+		setTimeout(function () {
+			map.removeOverlay(carMk1);
+		},remove_time)
+	}
+
+
+	function run_track(){
+		track_n(pts1, 14, 10000);
+	}
+	window.run = function () {
+		run_track();
+	}
+
+	setTimeout(function () {
+		run();
+	}, 1500);
+</script>
