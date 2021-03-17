@@ -147,7 +147,7 @@
 		}, 100)
 		setTimeout(function () {
 			map.removeOverlay(carMk2);
-		},1000)
+		},1500)
 
 	}
 
@@ -167,7 +167,7 @@
 		i = 0;
 
 		function resetMkPoint(i) {
-		    map.centerAndZoom(pts3[i], 17);
+		    map.centerAndZoom(pts3[i], 16);
 		    carMk.setPosition(pts3[i]);
 		    if (i < paths) {
 			setTimeout(function () {
