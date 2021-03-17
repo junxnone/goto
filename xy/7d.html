@@ -79,6 +79,10 @@
 			map.removeOverlay(carMk);
 		},remove_time)
 	}
+	var map = new BMap.Map("allmap");
+	setMapEvent();
+	addMapControl();
+	
 	pts1 = get_pts('../data/prejun.geojson')
   	pts2 = get_pts('../data/premin.geojson')
 	pts3 = get_pts('../data/7d1.geojson')
@@ -86,6 +90,8 @@
 	pts5 = get_pts('../data/7d3.geojson')
 	pts6 = get_pts('../data/7d4.geojson')
 	
+	map.centerAndZoom(pts1[0], 13);
+
 	var junIcon = new BMap.Icon("../img/xzrs.png", new BMap.Size(30, 30), {
 		imageOffset: new BMap.Size(0, 0)
 	});
@@ -96,10 +102,7 @@
 		imageOffset: new BMap.Size(0, 0) 
 	});
 
-	var map = new BMap.Map("allmap");
-	map.centerAndZoom(pts1[0], 13);
-	setMapEvent();
-	addMapControl();
+
 
 	function run_track(){
 		track_n(pts1, junIcon, 14, 10000);
