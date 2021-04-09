@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
+	<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://mapv.baidu.com/build/mapv.min.js"></script>
+	<script src="../js/gcoord.js"></script>
+	<title>The 9th Date - Shanghai-Wuxi</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(121.422,30.993), 13);
+
+	function setMapEvent(){
+		map.enableScrollWheelZoom();
+		map.enableKeyboard();
+		map.enableDragging();
+		map.enableDoubleClickZoom()
+	}
+	function addMapControl(){
+		var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+		scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+		map.addControl(scaleControl);
+		var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+		map.addControl(navControl);
+		var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+		map.addControl(overviewControl);
+	}
+	function get_pts(filename){
+		var pts = []
+		$.get(filename, function(geojson) {
+			  var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+			  darray = geojsonDataSet._data
+			  var data_len = darray.length
+			  for (var j = 0; j < data_len; j++) {
+				  var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
+				  pts.push(pt);
+		  	  }
+		});
+		console.log(pts);
+		return pts
+	}
+	function track_n(ptsn, cion, zoom_level, p_time, sp=1, rmp = 1){
+		var carMk = new BMap.Marker(ptsn[0], {
+			icon: cion
+		});
+		map.addOverlay(carMk);
+		var paths = ptsn.length; //获得有几个点
+		var polyline = new BMap.Polyline(ptsn, {
+		    strokeColor: "blue",
+		    strokeWeight: 2,
+		    strokeOpacity: 0.5
+		}); //创建折线
+
+		map.addOverlay(polyline); //增加折线
+		i = 0;
+		function resetMkPoint(i) {
+		    if (sp == 1) {
+		    	map.centerAndZoom(ptsn[i], zoom_level);
+		    }
+		    carMk.setPosition(ptsn[i]);
+		    if (i < paths) {
+			setTimeout(function () {
+			    i++;
+			    resetMkPoint(i);
+			}, p_time);
+		    }
+		}
+		setTimeout(function () {
+		    resetMkPoint(1);
+		}, 100)
+		if (rmp == 1) {
+			setTimeout(function () {
+				map.removeOverlay(carMk);
+			}, ptsn.length * (p_time + 50))		    
+	    	}
+
+	}
+	setMapEvent();
+	addMapControl();
+	
+	pts1 = get_pts('../data/prejun.geojson')
+  	pts2 = get_pts('../data/premin.geojson')
+	pts3 = get_pts('../data/7d1.geojson')
+	pts4 = get_pts('../data/7d2.geojson')
+	pts5 = get_pts('../data/7d3.geojson')
+	pts6 = get_pts('../data/7d4.geojson')
+	
+	var junIcon = new BMap.Icon("../img/xzrs.png", new BMap.Size(30, 30), {
+		imageOffset: new BMap.Size(0, 0)
+	});
+	var minIcon = new BMap.Icon("../img/yzrs.png", new BMap.Size(30, 30), {
+		imageOffset: new BMap.Size(0, 0)
+	});
+	var lvIcon = new BMap.Icon("../img/xzyz.png", new BMap.Size(45, 30), {
+		imageOffset: new BMap.Size(0, 0) 
+	});
+
+	function get_ot(ptsx, ptime){
+		var otime = ptsx.length * (ptime + 50);
+		return otime;
+	}
+
+	
+	function run_track(){
+		
+		var spts1 = 50
+		var spts2 = 100
+		var spts3 = 100
+		var spts4 = 200
+		var spts5 = 150
+		var spts6 = 100
+		
+		var ot1 = get_ot(pts1, spts1) - 5000;
+		var ot2 = get_ot(pts2, spts2) + ot1;
+		var ot3 = get_ot(pts3, spts3) + ot2;
+		var ot4 = get_ot(pts4, spts4) + ot3;
+		var ot5 = get_ot(pts5, spts5) + ot4;
+		
+		track_n(pts1, junIcon, 14, spts1);
+		setTimeout(function () { track_n(pts2, minIcon, 15, spts2, sp=0);}, ot1);
+		setTimeout(function () { track_n(pts3, lvIcon, 14, spts3);}, ot2);
+		setTimeout(function () { track_n(pts4, lvIcon, 16, spts4);}, ot3);
+		setTimeout(function () { track_n(pts5, lvIcon, 15, spts5);}, ot4);
+		setTimeout(function () { track_n(pts6, lvIcon, 14, spts6, sp=1, rmp=0);}, ot5);
+
+	}
+	window.run = function () {
+		run_track();
+	}
+
+	setTimeout(function () {
+		run();
+	}, 1500);
+</script>
