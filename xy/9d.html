@@ -141,7 +141,7 @@
 		var ot2 = get_ot(pts2, spts2) + ot1;
 		var ot3 = get_ot(pts3, spts3) + ot2;
 		var ot4 = get_ot(pts4, spts4) + ot3;
-		var ot5 = get_ot(pts5, spts5) + ot4;
+		var ot5 = get_ot(pts5, spts5) + ot4 - 5000;
 		var ot6 = get_ot(pts5, spts6) + ot5;
 		var ot7 = get_ot(pts5, spts7) + ot6;
 		var ot8 = get_ot(pts5, spts8) + ot7;
@@ -155,12 +155,12 @@
 		setTimeout(function () { track_n(pts2, minIcon, 15, spts2, sp=0);}, ot1);
 		setTimeout(function () { track_n(pts3, lvIcon, 14, spts3);}, ot2);
 		setTimeout(function () { track_n(pts4, lvIcon, 11, spts4);}, ot3);
-		setTimeout(function () { track_n(pts5, lvIcon, 14, spts5);}, ot4);
+		setTimeout(function () { track_n(pts5, lvIcon, 14, spts5, rmp=0);}, ot4);
 		setTimeout(function () { track_n(pts6, lvIcon, 14, spts6);}, ot5);
 		setTimeout(function () { track_n(pts7, lvIcon, 14, spts7);}, ot6);
 		setTimeout(function () { track_n(pts8, lvIcon, 14, spts8);}, ot7);
 		setTimeout(function () { track_n(pts9, lvIcon, 14, spts9);}, ot8);
-		setTimeout(function () { track_n(pts10, lvIcon, 14, spts10);}, ot9);
+		setTimeout(function () { track_n(pts10, lvIcon, 14, spts10, rmp=0);}, ot9);
 		setTimeout(function () { track_n(pts11, lvIcon, 14, spts11);}, ot10);
 		setTimeout(function () { track_n(pts12, lvIcon, 14, spts12);}, ot11);
 		setTimeout(function () { track_n(pts13, lvIcon, 14, spts13, sp=1, rmp=0);}, ot12);
