@@ -1,4 +1,4 @@
-# Albert Einstein 
+# Jun&Min 
 
 - age: show
 - mention: https://github.com/{@mention}
