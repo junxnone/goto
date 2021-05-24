@@ -2,6 +2,15 @@
 
 - age: show
 - mention: https://github.com/{@mention}
+## Brief
+- 2008~ C
+  - 2011~ Product
+- 2008~
+  - 2016~ Product
+- 2008~ Shell
+  - 2016~ Product
+- 2017~ Python
+
 
 ## 嵌入式 SW&HW
 - 2011-06~2016-01 嵌入式软硬件
