@@ -64,6 +64,7 @@
 
 		map.addOverlay(polyline); //增加折线
 		i = 0;
+		map.setZoom(zoom_level);
 		function resetMkPoint(i) {
 		    if (sp == 1 && i > 5) {
 		    	map.centerAndZoom(ptsn[i], zoom_level);
