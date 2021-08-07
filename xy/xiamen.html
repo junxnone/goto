@@ -116,19 +116,15 @@
 		return otime;
 	}
 
-	
+	var ot1 = get_ot(pts1, 0) - pts2.length * 120;
+	var ot2 = get_ot(pts2, 0) + ot1;
+	var ot3 = get_ot(pts3, 0) + ot2;
+	var ot4 = get_ot(pts4, 0) + ot3;
+	var ot5 = get_ot(pts5, 20) + ot4 ;
+	var ot6 = get_ot(pts6, 20) + ot5 ;
+	var ot7 = get_ot(pts7, 20) + ot6 ;	
 	function run_track(){
 		ptime = 150
-		
-		var ot1 = get_ot(pts1, 0) - pts2.length * 130;
-		var ot2 = get_ot(pts2, 0) + ot1;
-		var ot3 = get_ot(pts3, 0) + ot2;
-		var ot4 = get_ot(pts4, 0) + ot3;
-		var ot5 = get_ot(pts5, 20) + ot4 ;
-		var ot6 = get_ot(pts6, 20) + ot5 ;
-		var ot7 = get_ot(pts7, 20) + ot6 ;
-
-
 		
 		track_n(pts1, junIcon, 14, ptime);
 		setTimeout(function () { track_n(pts2, minIcon, 14, ptime, sp=0);}, ot1);
