@@ -94,6 +94,9 @@
 	pts3 = get_pts('../data/xinzhuang2hongqiao.geojson')
 	pts4 = get_pts('../data/hongqiao2xiamen.geojson')
 	pts5 = get_pts('../data/xiamen1d.geojson')
+	pts6 = get_pts('../data/xiamen2d.geojson')
+	pts7 = get_pts('../data/xiamen3d.geojson')
+	pts8 = get_pts('../data/xiamen4d.geojson')
 
 
 	
@@ -121,12 +124,18 @@
 		var spts3 = 100
 		var spts4 = 100
 		var spts5 = 100
+		var spts6 = 100
+		var spts7 = 100
+		var spts8 = 100
 
 		
 		var ot1 = get_ot(pts1, spts1) - 4000;
 		var ot2 = get_ot(pts2, spts2) + ot1;
 		var ot3 = get_ot(pts3, spts3) + ot2;
 		var ot4 = get_ot(pts4, spts4) + ot3;
+		var ot5 = get_ot(pts4, spts5) + ot4;
+		var ot6 = get_ot(pts4, spts6) + ot5;
+		var ot7 = get_ot(pts4, spts7) + ot6;
 
 
 		
@@ -135,6 +144,9 @@
 		setTimeout(function () { track_n(pts3, lvIcon, 14, spts3);}, ot2);
 		setTimeout(function () { track_n(pts4, lvIcon, 10, spts4);}, ot3);
 		setTimeout(function () { track_n(pts5, lvIcon, 15, spts5);}, ot4);
+		setTimeout(function () { track_n(pts6, lvIcon, 16, spts6);}, ot5);
+		setTimeout(function () { track_n(pts7, lvIcon, 16, spts7);}, ot6);
+		setTimeout(function () { track_n(pts8, lvIcon, 14, spts8);}, ot7);
 
 
 	}
