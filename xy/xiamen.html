@@ -111,42 +111,43 @@
 		imageOffset: new BMap.Size(0, 0) 
 	});
 
-	function get_ot(ptsx, ptime){
-		var otime = ptsx.length * (ptime + 50);
+	function get_ot(ptsx, addtime){
+		var otime = ptsx.length * (addtime + 100);
 		return otime;
 	}
 
 	
 	function run_track(){
+		ptime = 100
 		
-		var spts1 = 100
-		var spts2 = 100
-		var spts3 = 100
-		var spts4 = 50
-		var spts5 = 80
-		var spts6 = 80
-		var spts7 = 80
-		var spts8 = 80
+		var spts1 = 50
+		var spts2 = 50
+		var spts3 = 50
+		var spts4 = 100
+		var spts5 = 100
+		var spts6 = 100
+		var spts7 = 100
+		var spts8 = 100
 
 		
-		var ot1 = get_ot(pts1, spts1) - 4000;
+		var ot1 = get_ot(pts1, spts1) ;
 		var ot2 = get_ot(pts2, spts2) + ot1;
 		var ot3 = get_ot(pts3, spts3) + ot2;
 		var ot4 = get_ot(pts4, spts4) + ot3;
-		var ot5 = get_ot(pts4, spts5) + ot4 + 20000;
-		var ot6 = get_ot(pts4, spts6) + ot5 + 20000;
-		var ot7 = get_ot(pts4, spts7) + ot6 + 20000;
+		var ot5 = get_ot(pts4, spts5) + ot4 ;
+		var ot6 = get_ot(pts4, spts6) + ot5 ;
+		var ot7 = get_ot(pts4, spts7) + ot6 ;
 
 
 		
-		track_n(pts1, junIcon, 14, spts1);
-		setTimeout(function () { track_n(pts2, minIcon, 14, spts2, sp=0);}, ot1);
-		setTimeout(function () { track_n(pts3, lvIcon, 14, spts3);}, ot2);
-		setTimeout(function () { track_n(pts4, lvIcon, 10, spts4);}, ot3);
-		setTimeout(function () { track_n(pts5, lvIcon, 15, spts5);}, ot4);
-		setTimeout(function () { track_n(pts6, lvIcon, 16, spts6);}, ot5);
-		setTimeout(function () { track_n(pts7, lvIcon, 17, spts7);}, ot6);
-		setTimeout(function () { track_n(pts8, lvIcon, 13, spts8);}, ot7);
+		track_n(pts1, junIcon, 14, ptime);
+		setTimeout(function () { track_n(pts2, minIcon, 14, ptime, sp=0);}, ot1);
+		setTimeout(function () { track_n(pts3, lvIcon, 14, ptime);}, ot2);
+		setTimeout(function () { track_n(pts4, lvIcon, 10, ptime);}, ot3);
+		setTimeout(function () { track_n(pts5, lvIcon, 15, ptime);}, ot4);
+		setTimeout(function () { track_n(pts6, lvIcon, 16, ptime);}, ot5);
+		setTimeout(function () { track_n(pts7, lvIcon, 17, ptime);}, ot6);
+		setTimeout(function () { track_n(pts8, lvIcon, 13, ptime);}, ot7);
 
 
 	}
