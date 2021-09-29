@@ -29,9 +29,11 @@
 - 2017-12 RT-Linux/Yocto/KVM
 
 ## ML/DL
+- 2018~ Image Classification
 - 2018~ DL/OpenVINO
-- 2019 Detection/Segmentation
-- 2020 AL/AutoML
+- 2019~ Detection/Segmentation
+- 2020~ AL/AutoML
 - 2021-05~ 3D Point Cloud
-- 2021-05 OpenMP
+- 2021-05~ Performance Optimization
+- 2021-05~ OpenMP
 - 2021-05 Vtune
