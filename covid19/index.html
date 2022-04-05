@@ -89,6 +89,11 @@
 	map.enableScrollWheelZoom(true);
 	var myGeo = new BMapGL.Geocoder();
 	var myIcon = new BMapGL.Icon("../img/poi-icon.png", new BMapGL.Size(60, 67));
+		
+	function show_mark_only(date){
+		map.clearOverlays();
+		show_mark(date);
+	}	
 	function show_mark(date){
 		$.get("fx" + date + ".csv", function(data) {
 		//$.get("data.csv", function(data) {
@@ -97,7 +102,7 @@
 
 		var index = 0;
 		for (index = 0; index < adds.length; index++) {
-			var add = adds[index];
+			var add = "奉贤区 " + adds[index];
 			geocodeSearch(add);
 		}
 		function geocodeSearch(add){
