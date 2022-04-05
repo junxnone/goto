@@ -78,7 +78,6 @@
     <div id='result'>
         <div>奉贤</div>
 	<div>显示日期</div>
-	<div><button onclick='show_all()' class='btn'>3.28~今</button></div>
 	<div><button onclick='show_mark_only("0404")' class='btn'>4.4 发布</button></div>
 	<div><button onclick='show_mark_only("0403")' class='btn'>4.3 发布</button></div>
 	<div><button onclick='show_mark_only("0402")' class='btn'>4.2 发布</button></div>
@@ -87,6 +86,7 @@
 	<div><button onclick='show_mark_only("0330")' class='btn'>3.30 发布</button></div>
 	<div><button onclick='show_mark_only("0329")' class='btn'>3.29 发布</button></div>
 	<div><button onclick='show_mark_only("0328")' class='btn'>3.28 发布</button></div>
+	<div><button onclick='show_all()' class='btn'>3.28~今</button></div>
 
     </div>
 	<script>
@@ -115,15 +115,16 @@
 		    myGeo.getPoint(add, function(point){
 			if (point) {
 			    var address = new BMapGL.Point(point.lng, point.lat);
-			    addMarker(address);//,new BMapGL.Label(add,{offset:new BMapGL.Size(10,-10)}));
+			    addMarker(address,new BMapGL.Label(add,{offset:new BMapGL.Size(10,-10)}));
 			}
 		    }, "上海市");
 		}
 		// 编写自定义函数,创建标注
-		//function addMarker(point,label){
-		function addMarker(point){
+		function addMarker(point,label){
+		//function addMarker(point){
 			var marker = new BMapGL.Marker(point, {icon: myIcon});
 			map.addOverlay(marker);
+			marker.setLabel(label);
 		}
 	  });
 		
