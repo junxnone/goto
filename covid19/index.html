@@ -86,6 +86,7 @@
 	map.centerAndZoom(new BMapGL.Point(121.422,30.993), 12);
 	map.enableScrollWheelZoom(true);
 	var myGeo = new BMapGL.Geocoder();
+	var myIcon = new BMapGL.Icon("../img/poi-icon.png", new BMapGL.Size(52, 26));
 	function show_mark(date){
 		$.get(date + ".csv", function(data) {
 		//$.get("data.csv", function(data) {
@@ -108,7 +109,7 @@
 		// 编写自定义函数,创建标注
 		//function addMarker(point,label){
 		function addMarker(point){
-			var marker = new BMapGL.Marker(point);
+			var marker = new BMapGL.Marker(point, {icon: myIcon});
 			map.addOverlay(marker);
 		}
 	  });
