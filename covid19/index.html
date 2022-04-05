@@ -88,7 +88,7 @@
 	var myGeo = new BMapGL.Geocoder();
 	var myIcon = new BMapGL.Icon("../img/poi-icon.png", new BMapGL.Size(60, 67));
 	function show_mark(date){
-		$.get(date + ".csv", function(data) {
+		$.get("fx" + date + ".csv", function(data) {
 		//$.get("data.csv", function(data) {
 		var adds = data.split('\n');
 		console.log(adds);
