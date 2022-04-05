@@ -108,7 +108,15 @@
 		function addMarker(point,label){
 			var marker = new BMapGL.Marker(point);
 			map.addOverlay(marker);
+			label.setStyle({display:"none"});
 			marker.setLabel(label);
+			marker.addEventListener("mouseover", function(e){
+				var label = this.getLabel()
+				label.setStyle({display:"block"});});
+			
+			marker.addEventListener("mouseout", function(e){
+				var label = this.getLabel()
+				label.setStyle({display:"none"});});
 		}
 	  });
 		
