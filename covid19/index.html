@@ -82,17 +82,15 @@
         </div>
     </div>
 	<script>
-		
+	var map = new BMapGL.Map('container');
+	map.centerAndZoom(new BMapGL.Point(121.422,30.993), 13);
+	map.enableScrollWheelZoom(true);
+	var myGeo = new BMapGL.Geocoder();
 	function show_mark(date){
 		$.get("data.csv", function(data) {
 		var adds = data.split('\n');
 		console.log(adds);
-
-		var map = new BMapGL.Map('container');
-		map.centerAndZoom(new BMapGL.Point(121.422,30.993), 13);
-		map.enableScrollWheelZoom(true);
-		var myGeo = new BMapGL.Geocoder();
-		
+\
 		var index = 0;
 		function bdGEO(){
 		    if (index < adds.length) {
