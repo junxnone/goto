@@ -77,21 +77,35 @@
     <div id='container'></div>
     <div id='result'>
         <div>批量地址解析</div>
-        <ul>
-            <li>1、包河区金寨路1号（金寨路与望江西路交叉口）</li>
-            <li>2、庐阳区凤台路209号（凤台路与蒙城北路交叉口）</li>
-            <li>3、蜀山区金寨路217号(近安医附院公交车站)</li>
-            <li>4、蜀山区梅山路10号(近安徽饭店)</li>
-            <li>5、蜀山区 长丰南路159号铜锣湾广场312室</li>
-            <li>6、合肥市寿春路93号钱柜星乐町KTV（逍遥津公园对面）</li>
-            <li>7、庐阳区长江中路177号</li>
-            <li>8、新站区胜利路89</li>
-        </ul>
         <div>
-            <button onclick='bdGEO()' class='btn'>批量解析</button>
+            <button onclick='bdGEO()' class='btn'>4.4号发布</button>
         </div>
     </div>
 	<script>
+	function bdGEO(){
+	    if (index < adds.length) {
+		var add = adds[index];
+		geocodeSearch(add);
+		index++;
+	    }
+	}
+	function geocodeSearch(add){
+	    if(index < adds.length){
+		setTimeout(window.bdGEO,400);
+	    } 
+	    myGeo.getPoint(add, function(point){
+		if (point) {
+		    var address = new BMapGL.Point(point.lng, point.lat);
+		    addMarker(address,new BMapGL.Label(index+":"+add,{offset:new BMapGL.Size(10,-10)}));
+		}
+	    }, "合肥市");
+	}
+	// 编写自定义函数,创建标注
+	function addMarker(point,label){
+		var marker = new BMapGL.Marker(point);
+		map.addOverlay(marker);
+		marker.setLabel(label);
+	}
 	$.get("data.csv", function(data) {
 		var adds = data.split('\n');
 		console.log(adds);
@@ -102,30 +116,7 @@
 		var myGeo = new BMapGL.Geocoder();
 		
 		var index = 0;
-		function bdGEO(){
-		    if (index < adds.length) {
-			var add = adds[index];
-			geocodeSearch(add);
-			index++;
-		    }
-		}
-		function geocodeSearch(add){
-		    if(index < adds.length){
-			setTimeout(window.bdGEO,400);
-		    } 
-		    myGeo.getPoint(add, function(point){
-			if (point) {
-			    var address = new BMapGL.Point(point.lng, point.lat);
-			    addMarker(address,new BMapGL.Label(index+":"+add,{offset:new BMapGL.Size(10,-10)}));
-			}
-		    }, "合肥市");
-		}
-		// 编写自定义函数,创建标注
-		function addMarker(point,label){
-			var marker = new BMapGL.Marker(point);
-			map.addOverlay(marker);
-			marker.setLabel(label);
-		}
+
 	  });
 	</script>
 </body>
