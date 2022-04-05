@@ -87,7 +87,8 @@
 	map.enableScrollWheelZoom(true);
 	var myGeo = new BMapGL.Geocoder();
 	function show_mark(date){
-		$.get(date + ".csv", function(data) {
+		//$.get(date + ".csv", function(data) {
+		$.get("data.csv", function(data) {
 		var adds = data.split('\n');
 		console.log(adds);
 
@@ -100,7 +101,7 @@
 		    myGeo.getPoint(add, function(point){
 			if (point) {
 			    var address = new BMapGL.Point(point.lng, point.lat);
-			    addMarker(address)//,new BMapGL.Label(add,{offset:new BMapGL.Size(10,-10)}));
+			    addMarker(address);//,new BMapGL.Label(add,{offset:new BMapGL.Size(10,-10)}));
 			}
 		    }, "上海市");
 		}
