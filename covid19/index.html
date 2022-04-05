@@ -92,11 +92,9 @@
         </div>
     </div>
     <script>
-	$.get("data.csv", function(data) {
-	      var items = data.split(',');
-	    	console.log(data);
+	$.get("data.md", function(data) {
+	      var items = data.split('\n');
 	   	console.log(items);
-
 	  });
         var map = new BMapGL.Map('container');
         map.centerAndZoom(new BMapGL.Point(117.269945,31.86713), 13);
