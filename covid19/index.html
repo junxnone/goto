@@ -92,12 +92,10 @@
 		console.log(adds);
 
 		var index = 0;
-		function bdGEO(){
-		    if (index < adds.length) {
+		if (index < adds.length) {
 			var add = adds[index];
 			geocodeSearch(add);
 			index++;
-		    }
 		}
 		function geocodeSearch(add){
 		    if(index < adds.length){
