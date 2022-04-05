@@ -89,7 +89,11 @@
             <button onclick='bdGEO()' class='btn'>批量解析</button>
         </div>
     </div>
+	<script src="../src/jquery.csv.min.js"></script>
     <script>
+        const input = $('data.csv').val();
+        const data = $.csv.toArray(input);
+	    console.log(data);
         var map = new BMapGL.Map('container');
         map.centerAndZoom(new BMapGL.Point(117.269945,31.86713), 13);
         map.enableScrollWheelZoom(true);
