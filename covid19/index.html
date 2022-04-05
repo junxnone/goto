@@ -92,19 +92,15 @@
 		console.log(adds);
 
 		var index = 0;
-		if (index < adds.length) {
+		for (index = 0; index < adds.length, index++) {
 			var add = adds[index];
 			geocodeSearch(add);
-			index++;
 		}
 		function geocodeSearch(add){
-		    if(index < adds.length){
-			setTimeout(window.bdGEO,400);
-		    } 
 		    myGeo.getPoint(add, function(point){
 			if (point) {
 			    var address = new BMapGL.Point(point.lng, point.lat);
-			    addMarker(address,new BMapGL.Label(index+":"+add,{offset:new BMapGL.Size(10,-10)}));
+			    addMarker(address,new BMapGL.Label(add,{offset:new BMapGL.Size(10,-10)}));
 			}
 		    }, "上海市");
 		}
