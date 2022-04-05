@@ -99,7 +99,7 @@
 		function geocodeSearch(add){
 		    myGeo.getPoint(add, function(point){
 			if (point) {
-			    var address = new BMapGL.Point(point.lng - 0.00085, point.lat - 0.004265);
+			    var address = new BMapGL.Point(point.lng, point.lat);
 			    addMarker(address,new BMapGL.Label(add,{offset:new BMapGL.Size(10,-10)}));
 			}
 		    }, "上海市");
