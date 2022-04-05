@@ -78,35 +78,13 @@
     <div id='result'>
         <div>批量地址解析</div>
         <div>
-            <button onclick='bdGEO()' class='btn'>4.4号发布</button>
+            <button onclick='show_mark("0404")' class='btn'>4.4号发布</button>
         </div>
     </div>
 	<script>
-	function bdGEO(){
-	    if (index < adds.length) {
-		var add = adds[index];
-		geocodeSearch(add);
-		index++;
-	    }
-	}
-	function geocodeSearch(add){
-	    if(index < adds.length){
-		setTimeout(window.bdGEO,400);
-	    } 
-	    myGeo.getPoint(add, function(point){
-		if (point) {
-		    var address = new BMapGL.Point(point.lng, point.lat);
-		    addMarker(address,new BMapGL.Label(index+":"+add,{offset:new BMapGL.Size(10,-10)}));
-		}
-	    }, "合肥市");
-	}
-	// 编写自定义函数,创建标注
-	function addMarker(point,label){
-		var marker = new BMapGL.Marker(point);
-		map.addOverlay(marker);
-		marker.setLabel(label);
-	}
-	$.get("data.csv", function(data) {
+		
+	function show_mark(date){
+		$.get("data.csv", function(data) {
 		var adds = data.split('\n');
 		console.log(adds);
 
@@ -116,8 +94,34 @@
 		var myGeo = new BMapGL.Geocoder();
 		
 		var index = 0;
-
+		function bdGEO(){
+		    if (index < adds.length) {
+			var add = adds[index];
+			geocodeSearch(add);
+			index++;
+		    }
+		}
+		function geocodeSearch(add){
+		    if(index < adds.length){
+			setTimeout(window.bdGEO,400);
+		    } 
+		    myGeo.getPoint(add, function(point){
+			if (point) {
+			    var address = new BMapGL.Point(point.lng, point.lat);
+			    addMarker(address,new BMapGL.Label(index+":"+add,{offset:new BMapGL.Size(10,-10)}));
+			}
+		    }, "合肥市");
+		}
+		// 编写自定义函数,创建标注
+		function addMarker(point,label){
+			var marker = new BMapGL.Marker(point);
+			map.addOverlay(marker);
+			marker.setLabel(label);
+		}
 	  });
+		
+	}
+	
 	</script>
 </body>
 </html>
