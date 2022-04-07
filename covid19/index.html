@@ -78,6 +78,7 @@
     <div id='result'>
         <div>奉贤</div>
 	<div>显示日期</div>
+	<div><button onclick='show_mark_only("0406")' class='btn'>4.6 新增</button></div>
 	<div><button onclick='show_mark_only("0405")' class='btn'>4.5 新增</button></div>
 	<div><button onclick='show_mark_only("0404")' class='btn'>4.4 新增</button></div>
 	<div><button onclick='show_mark_only("0403")' class='btn'>4.3 新增</button></div>
@@ -132,6 +133,7 @@
 	}
 	function show_all(){
 		map.clearOverlays();
+		show_mark("0406");
 		show_mark("0405");
 		show_mark("0404");
 		show_mark("0403");
