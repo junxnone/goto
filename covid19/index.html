@@ -6,7 +6,7 @@
     <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=2.0&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
     <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <title>SH 奉贤 疫情趋势</title>
+    <title>SH SH 疫情趋势</title>
     <style>
        body,html{
            width: 100%;
@@ -76,20 +76,19 @@
 <body>
     <div id='container'></div>
     <div id='result'>
-        <div>奉贤</div>
-	<div>显示日期</div>
-	<div><button onclick='show_mark_only("0407")' class='btn'>4.7 新增</button></div>
-	<div><button onclick='show_mark_only("0406")' class='btn'>4.6 新增</button></div>
-	<div><button onclick='show_mark_only("0405")' class='btn'>4.5 新增</button></div>
-	<div><button onclick='show_mark_only("0404")' class='btn'>4.4 新增</button></div>
-	<div><button onclick='show_mark_only("0403")' class='btn'>4.3 新增</button></div>
-	<div><button onclick='show_mark_only("0402")' class='btn'>4.2 新增</button></div>
-	<div><button onclick='show_mark_only("0401")' class='btn'>4.1 新增</button></div>
-	<div><button onclick='show_mark_only("0331")' class='btn'>3.31 新增</button></div>
-	<div><button onclick='show_mark_only("0330")' class='btn'>3.30 新增</button></div>
-	<div><button onclick='show_mark_only("0329")' class='btn'>3.29 新增</button></div>
-	<div><button onclick='show_mark_only("0328")' class='btn'>3.28 新增</button></div>
-	<div><button onclick='show_all()' class='btn'>3.28~今</button></div>
+        <div>每日</div>
+	<div><button onclick='show_mark_only("0407")' class='btn'>4.7</button></div>
+	<div><button onclick='show_mark_only("0406")' class='btn'>4.6</button></div>
+	<div><button onclick='show_mark_only("0405")' class='btn'>4.5</button></div>
+	<div><button onclick='show_mark_only("0404")' class='btn'>4.4</button></div>
+	<div><button onclick='show_mark_only("0403")' class='btn'>4.3</button></div>
+	<div><button onclick='show_mark_only("0402")' class='btn'>4.2</button></div>
+	<div><button onclick='show_mark_only("0401")' class='btn'>4.1</button></div>
+	<div><button onclick='show_mark_only("0331")' class='btn'>3.31</button></div>
+	<div><button onclick='show_mark_only("0330")' class='btn'>3.30</button></div>
+	<div><button onclick='show_mark_only("0329")' class='btn'>3.29</button></div>
+	<div><button onclick='show_mark_only("0328")' class='btn'>3.28</button></div>
+	<div><button onclick='show_all()' class='btn'>3.28~</button></div>
 
     </div>
 	<script>
@@ -104,14 +103,14 @@
 		show_mark(date);
 	}	
 	function show_mark(date){
-		$.get("fx" + date + ".csv", function(data) {
+		$.get("sh" + date + ".csv", function(data) {
 		//$.get("data.csv", function(data) {
 		var adds = data.split('\n');
 		console.log(adds);
 
 		var index = 0;
 		for (index = 0; index < adds.length; index++) {
-			var add = "奉贤区 " + adds[index];
+			var add = adds[index];
 			geocodeSearch(add);
 		}
 		function geocodeSearch(add){
