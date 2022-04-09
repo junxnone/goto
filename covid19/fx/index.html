@@ -209,18 +209,15 @@
 
         function show_mark_only(date){
             view.removeAllLayers();
-            show_mark(date);
+            show_mark(data[date]);
         }
-        function show_mark(date){
+        function show_mark(dd){
             view.addLayer(clusterLayer);
-            clusterLayer.setData(data[date]);
+            clusterLayer.setData(dd);
         }
-        function show_layer(){
 
-        }
-         data.done(function() {
-             show_mark_only("0408");
-         });
+        show_mark_only("0408");
+
         </script>
     </body>
 </html>
