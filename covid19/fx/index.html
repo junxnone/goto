@@ -89,7 +89,7 @@
             });
             return pts
         }
-
+    
         var view = new mapvgl.View({
             map: map
         });
@@ -122,15 +122,15 @@
                 }
             }
         });
-        view.addLayer(clusterLayer);
-
+        var data = [];
         show_mark_only("0408");
         function show_mark_only(date){
             view.removeAllLayers();
             show_mark(date);
         }
         function show_mark(date){
-            var data = init_data("../../data2/sh" + date + ".geojson");
+            data = init_data("../../data2/sh" + date + ".geojson");
+            view.addLayer(clusterLayer);
             clusterLayer.setData(data);
         }
         </script>
