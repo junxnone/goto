@@ -141,13 +141,10 @@
                 },
                 properties: {
                     icon: [
-                        'images/marker.png',
-                        'images/icons/icon-accident.png',
-                        'images/icons/icon-location.png',
-                        'images/icons/icon-airplane.png'
-                    ][randomCount % 4],
-                    width: randomCount % 2 === 0 ? 100 / 4 : 30,
-                    height: randomCount % 2 === 0 ? 153 / 4 : 30
+                        '../../img/poi-icon-s.png'
+                    ],
+                    width: 20,
+                    height: 22
                 }
             });
         }
@@ -176,12 +173,6 @@
                     : count >= 1000 ? Math.round(count / 100) / 10 + 'k' : count;
                 }
             },
-             //设置非聚合的点的icon
-             iconOptions: {
-                 width: 20,
-                 height: 22,
-                 icon: '../../img/poi-icon-s.png',
-             },
             enablePicked: true,
             onClick(e) {
                 if (e.dataItem) {
