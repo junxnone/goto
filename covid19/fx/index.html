@@ -65,7 +65,7 @@
             return map;
         }
             
-        function init_data(filename){
+        function init_data(filename, callback){
             var pts = []
             $.get(filename, function(geojson) {
                   var geojsonDataSet = mapv.geojson.getDataSet(geojson);
@@ -87,6 +87,7 @@
                     });
                   }
             });
+            callback(pts);
             return pts
         }
     
@@ -128,9 +129,7 @@
             show_mark(date);
         }
         function show_mark(date){
-            data = init_data("../../data2/sh" + date + ".geojson");
-            console.log(data);
-            setTimeout(() => {show_layer()},10);
+            data = init_data("../../data2/sh" + date + ".geojson", show_layer);
         }
         function show_layer(){
             view.addLayer(clusterLayer);
