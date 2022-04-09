@@ -24,11 +24,94 @@
         <script src="//mapv.baidu.com/build/mapv.min.js"></script>
         <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.146/dist/mapvgl.min.js"></script>
         <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-
+    <title>SH 疫情趋势</title>
+    <style>
+       body,html{
+           width: 100%;
+           height: 100%;
+           padding: 0;
+           margin: 0;
+       }
+       #container{
+           width: 100%;
+           height: 100%;
+           overflow: hidden;
+       }
+       #result{
+           position: fixed;
+           top: 10px;
+           right: 10px;
+           width: 100px;
+           height: 480px;
+           line-height: 30px;
+           text-align: center;
+           background: #fff;
+           box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);
+           border-radius: 7px;
+           z-index: 99;
+       }
+      #result>div:first-child{
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background: #00BFFF;
+            border-radius: 7px 7px 0px 0px;
+            color: #fff;
+      }
+      #result ul{
+           list-style-type: none;
+           margin: 0;
+           padding: 0;
+      }
+      #result ul li{
+           color: #000;
+           padding: 7px;
+           font-size: 14px;
+           text-align: justify;
+           border-bottom: 1px solid #D3D3D3  
+      }
+      #result>div:last-child{
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 10px;
+      }
+      .btn{ 
+          width: 100px;
+          height: 35px;
+          color: #fff;
+          font-size: 14px;;
+          border-radius: 5px;
+          background: #00BFFF;
+          box-shadow: none;
+      }
+      .btn:hover{
+          cursor: pointer;
+      }
+    </style>
+</head>
     </head>
 
     <body>
         <div id="map_container"></div>
+        <div id='result'>
+        <div>每日</div>
+        <div><button onclick='show_mark_only("0408")' class='btn'>4.8</button></div>
+        <div><button onclick='show_mark_only("0407")' class='btn'>4.7</button></div>
+        <div><button onclick='show_mark_only("0406")' class='btn'>4.6</button></div>
+        <div><button onclick='show_mark_only("0405")' class='btn'>4.5</button></div>
+        <div><button onclick='show_mark_only("0404")' class='btn'>4.4</button></div>
+        <div><button onclick='show_mark_only("0403")' class='btn'>4.3</button></div>
+        <div><button onclick='show_mark_only("0402")' class='btn'>4.2</button></div>
+        <div><button onclick='show_mark_only("0401")' class='btn'>4.1</button></div>
+        <div><button onclick='show_mark_only("0331")' class='btn'>3.31</button></div>
+        <div><button onclick='show_mark_only("0330")' class='btn'>3.30</button></div>
+        <div><button onclick='show_mark_only("0329")' class='btn'>3.29</button></div>
+        <div><button onclick='show_mark_only("0328")' class='btn'>3.28</button></div>
+        <div><button onclick='show_all()' class='btn'>3.28~</button></div>
+
+        </div>
         <script>
         /* global BMapGL */
 
