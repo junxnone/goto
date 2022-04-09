@@ -65,7 +65,7 @@
             return map;
         }
             
-        /*function get_data(filename){
+        function get_data(filename){
             var pts = []
             $.get(filename, function(geojson) {
                   var geojsonDataSet = mapv.geojson.getDataSet(geojson);
@@ -90,8 +90,8 @@
             return pts
         }
         var data = get_data("../../data2/fx0408.geojson");
-*/
-        var data = [];
+
+        /*var data = [];
 
         var citys = [
             '北京',
@@ -147,7 +147,7 @@
                     height: 22
                 }
             });
-        }
+        }*/
         var view = new mapvgl.View({
             map: map
         });
