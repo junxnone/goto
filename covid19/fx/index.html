@@ -66,8 +66,8 @@
         }
         var data = new Array();    
         function init_data(filename){
+            var pts = []
             $.get(filename, function(geojson) {
-                  var pts = []
                   var geojsonDataSet = mapv.geojson.getDataSet(geojson);
                   darray = geojsonDataSet._data
                   var data_len = darray.length
