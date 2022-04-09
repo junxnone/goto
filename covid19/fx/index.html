@@ -172,11 +172,7 @@
             });
             return pts
         }
-        init_data(show_mark);
-        function init_data(callback){
-                data['0408'] = read_data("../../data2/sh0408.geojson");
-                callback(data['0408']);
-        }
+
             
         var view = new mapvgl.View({
             map: map
@@ -218,6 +214,11 @@
         function show_mark(dd){
             view.addLayer(clusterLayer);
             clusterLayer.setData(dd);
+        }
+        init_data(show_mark);
+        function init_data(callback){
+                data['0408'] = read_data("../../data2/sh0408.geojson");
+                callback(data['0408']);
         }
         </script>
     </body>
