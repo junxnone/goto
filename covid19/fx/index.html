@@ -65,7 +65,7 @@
             return map;
         }
             
-        function get_data(filename){
+        /*function get_data(filename){
             var pts = []
             $.get(filename, function(geojson) {
                   var geojsonDataSet = mapv.geojson.getDataSet(geojson);
@@ -90,7 +90,67 @@
             return pts
         }
         var data = get_data("../../data2/fx0408.geojson");
+*/
+        var data = [];
 
+        var citys = [
+            '北京',
+            '天津',
+            '上海',
+            '重庆',
+            '石家庄',
+            '太原',
+            '呼和浩特',
+            '哈尔滨',
+            '长春',
+            '沈阳',
+            '济南',
+            '南京',
+            '合肥',
+            '杭州',
+            '南昌',
+            '福州',
+            '郑州',
+            '武汉',
+            '长沙',
+            '广州',
+            '南宁',
+            '西安',
+            '银川',
+            '兰州',
+            '西宁',
+            '乌鲁木齐',
+            '成都',
+            '贵阳',
+            '昆明',
+            '拉萨',
+            '海口'
+        ];
+
+        var randomCount = 100000;
+
+        // 构造数据
+        while (randomCount--) {
+            var cityCenter = mapv.utilCityCenter.getCenterByCityName(
+                citys[parseInt(Math.random() * citys.length, 10)]
+            );
+            data.push({
+                geometry: {
+                    type: 'Point',
+                    coordinates: [cityCenter.lng - 2 + Math.random() * 4, cityCenter.lat - 2 + Math.random() * 4]
+                },
+                properties: {
+                    icon: [
+                        'images/marker.png',
+                        'images/icons/icon-accident.png',
+                        'images/icons/icon-location.png',
+                        'images/icons/icon-airplane.png'
+                    ][randomCount % 4],
+                    width: randomCount % 2 === 0 ? 100 / 4 : 30,
+                    height: randomCount % 2 === 0 ? 153 / 4 : 30
+                }
+            });
+        }
         var view = new mapvgl.View({
             map: map
         });
