@@ -42,8 +42,8 @@
         var map = initMap({
             style: whiteStyle,
             tilt: 10,
-            center: [109.792816,27.702774],
-            zoom: 5,
+            center: [121.422,30.993],
+            zoom: 12,
             skyColors: [
                 // 地面颜色
                 'rgba(226, 237, 248, 0)',
@@ -138,12 +138,12 @@
                     : count >= 1000 ? Math.round(count / 100) / 10 + 'k' : count;
                 }
             },
-            // 设置非聚合的点的icon
-            // iconOptions: {
-            //     width: 100 / 4,
-            //     height: 153 / 4,
-            //     icon: 'images/marker.png',
-            // },
+             设置非聚合的点的icon
+             iconOptions: {
+                 width: 100 / 4,
+                 height: 153 / 4,
+                 icon: '../../img/poi-icon-s.png',
+             },
             enablePicked: true,
             onClick(e) {
                 if (e.dataItem) {
