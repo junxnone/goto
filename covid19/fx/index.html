@@ -172,7 +172,6 @@
             });
             return pts
         }
-        data['0408'] = init_data("../../data2/sh0408.geojson");
 
         var view = new mapvgl.View({
             map: map
@@ -215,9 +214,15 @@
             view.addLayer(clusterLayer);
             clusterLayer.setData(dd);
         }
-
-        show_mark_only("0408");
-
+        function *show_last_day(){
+            data['0408'] = init_data("../../data2/sh0408.geojson");
+            yield;
+            show_mark_only("0408");
+            let _self=show_last_day();
+            _self.next();
+            _self.next();
+        }
+        show_last_day();
         </script>
     </body>
 </html>
