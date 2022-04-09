@@ -107,7 +107,7 @@
 	function show_mark(date){
 		
 		var markers = []
-		$.get('../data2/fx' + date + ".geojson', function(geojson) {
+		$.get('../data2/fx' + date + '.geojson', function(geojson) {
 
 			var geojsonDataSet = mapv.geojson.getDataSet(geojson);
 			darray = geojsonDataSet._data
