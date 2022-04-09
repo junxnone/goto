@@ -21,7 +21,6 @@
         }
         </style>
         <script src="//api.map.baidu.com/api?v=1.0&type=webgl&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
-        <script src="../../js/common.js"></script>
         <script src="//mapv.baidu.com/build/mapv.min.js"></script>
         <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.146/dist/mapvgl.min.js"></script>
     </head>
@@ -51,7 +50,36 @@
                 'rgba(186, 211, 252, 1)'
             ]
         });
+        function initMap(options) {
+            options = Object.assign({
+                tilt: 60,
+                heading: 0
+            }, options);
+            var map = new BMapGL.Map('map_container', {
+                restrictCenter: false,
+                style: {styleJson: options.style || darkStyle }
+            });
+            map.enableKeyboard();
+            map.enableScrollWheelZoom();
+            map.enableInertialDragging();
+            map.enableContinuousZoom();
 
+            map.setDisplayOptions(options.displayOptions || {
+                    indoor: false,
+                    poi: true,
+                    skyColors: options.skyColors || [
+                        'rgba(5, 5, 30, 0.01)',
+                        'rgba(5, 5, 30, 1.0)'
+                    ]
+                });
+            if (options.center && options.zoom) {
+                map.centerAndZoom(new BMapGL.Point(options.center[0], options.center[1]), options.zoom);
+            }
+
+            map.setTilt(options.tilt);
+            map.setHeading(options.heading);
+            return map;
+        }
         var data = [];
 
         var citys = [
