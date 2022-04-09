@@ -39,39 +39,21 @@
         /* global whiteStyle */
 
         var map = initMap({
-            style: whiteStyle,
             tilt: 10,
             center: [121.422,30.993],
             zoom: 12,
-            skyColors: [
-                // 地面颜色
-                'rgba(226, 237, 248, 0)',
-                // 天空颜色
-                'rgba(186, 211, 252, 1)'
-            ]
         });
         function initMap(options) {
             options = Object.assign({
                 tilt: 60,
                 heading: 0
             }, options);
-            var map = new BMapGL.Map('map_container', {
-                restrictCenter: false,
-                style: {styleJson: options.style || darkStyle }
-            });
+            var map = new BMapGL.Map('map_container');
             map.enableKeyboard();
             map.enableScrollWheelZoom();
             map.enableInertialDragging();
             map.enableContinuousZoom();
 
-            map.setDisplayOptions(options.displayOptions || {
-                    indoor: false,
-                    poi: true,
-                    skyColors: options.skyColors || [
-                        'rgba(5, 5, 30, 0.01)',
-                        'rgba(5, 5, 30, 1.0)'
-                    ]
-                });
             if (options.center && options.zoom) {
                 map.centerAndZoom(new BMapGL.Point(options.center[0], options.center[1]), options.zoom);
             }
