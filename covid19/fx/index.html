@@ -123,7 +123,6 @@
             }
         });
         var data = [];
-        var run = show_mark_only("0408");
         function show_mark_only(date){
             view.removeAllLayers();
             show_mark(date);
@@ -137,6 +136,7 @@
             view.addLayer(clusterLayer);
             clusterLayer.setData(data);
         }
+         show_mark_only("0408");
         </script>
     </body>
 </html>
