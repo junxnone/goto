@@ -148,7 +148,7 @@
             return map;
         }
         var data = new Array();    
-        function init_data(filename){
+        function read_data(filename){
             var pts = []
             $.get(filename, function(geojson) {
                   var geojsonDataSet = mapv.geojson.getDataSet(geojson);
@@ -172,7 +172,12 @@
             });
             return pts
         }
-
+        init_data(show_mark);
+        function init_data(callback){
+                data['0408'] = init_data("../../data2/sh0408.geojson");
+                callback(data['0408']);
+        }
+            
         var view = new mapvgl.View({
             map: map
         });
@@ -214,15 +219,6 @@
             view.addLayer(clusterLayer);
             clusterLayer.setData(dd);
         }
-        function *show_last_day(){
-            data['0408'] = init_data("../../data2/sh0408.geojson");
-            yield;
-            show_mark_only("0408");
-            let _self=show_last_day();
-            _self.next();
-            _self.next();
-        }
-        show_last_day();
         </script>
     </body>
 </html>
