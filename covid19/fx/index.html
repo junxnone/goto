@@ -114,11 +114,17 @@
 			var data_len = darray.length
 			for (var j = 0; j < data_len; j++) {
 				var pt = new BMap.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
-				markers.push(new BMap.Marker(pt, {icon: myIcon}));
+				//markers.push(new BMap.Marker(pt, {icon: myIcon}));
+				addMarker(pt)
 			}
 		});
 		
-		var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+		function addMarker(point){
+			var marker = new BMap.Marker(point, {icon: myIcon});
+			map.addOverlay(marker);
+			marker.setLabel(label);
+		}
+		//var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
 	}
 	function show_all(){
 		map.clearOverlays();
