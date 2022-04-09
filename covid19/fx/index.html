@@ -94,7 +94,7 @@
 
     </div>
 	<script>
-	var map = new BMap.Map('container');
+	var map = new BMapGL.Map('container');
 	map.centerAndZoom(new BMap.Point(121.422,30.993), 13);
 	map.enableScrollWheelZoom(true);
 	var myIcon = new BMap.Icon("../../img/poi-icon-s.png", new BMap.Size(20, 22));
@@ -112,12 +112,20 @@
 			darray = geojsonDataSet._data
 			var data_len = darray.length
 			for (var j = 0; j < data_len; j++) {
-				data.push(darray[j])
+				data.push({
+					geometry: {
+					    type: 'Point',
+					    coordinates: [darray[data_len].geometry.coordinates[0], darray[data_len].geometry.coordinates[1]]
+					},
+					properties: {
+					    icon: [
+						'../../img/poi-icon-s.png'
+					    ]
+					}
+				    });
 			}
 		});
-		        var view = new mapvgl.View({
-            map: map
-        });
+		        var view = new mapvgl.View({ map: map });
 
         var clusterLayer = new mapvgl.ClusterLayer({
             minSize: 30, // 聚合点显示的最小直径
