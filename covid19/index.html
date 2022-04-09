@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=2.0&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
-    <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" >
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
+        <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-    <title>SH SH 疫情趋势</title>
+        #map_container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        </style>
+        <script src="//api.map.baidu.com/api?v=1.0&type=webgl&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
+        <script src="//mapv.baidu.com/build/mapv.min.js"></script>
+        <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.146/dist/mapvgl.min.js"></script>
+        <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>SH 疫情趋势</title>
     <style>
        body,html{
            width: 100%;
@@ -73,81 +90,138 @@
       }
     </style>
 </head>
-<body>
-    <div id='container'></div>
-    <div id='result'>
+    </head>
+
+    <body>
+        <div id="map_container"></div>
+        <div id='result'>
         <div>每日</div>
-	<div><button onclick='show_mark_only("0407")' class='btn'>4.7</button></div>
-	<div><button onclick='show_mark_only("0406")' class='btn'>4.6</button></div>
-	<div><button onclick='show_mark_only("0405")' class='btn'>4.5</button></div>
-	<div><button onclick='show_mark_only("0404")' class='btn'>4.4</button></div>
-	<div><button onclick='show_mark_only("0403")' class='btn'>4.3</button></div>
-	<div><button onclick='show_mark_only("0402")' class='btn'>4.2</button></div>
-	<div><button onclick='show_mark_only("0401")' class='btn'>4.1</button></div>
-	<div><button onclick='show_mark_only("0331")' class='btn'>3.31</button></div>
-	<div><button onclick='show_mark_only("0330")' class='btn'>3.30</button></div>
-	<div><button onclick='show_mark_only("0329")' class='btn'>3.29</button></div>
-	<div><button onclick='show_mark_only("0328")' class='btn'>3.28</button></div>
-	<div><button onclick='show_all()' class='btn'>3.28~</button></div>
+        <div><button onclick='show_mark_only("0408")' class='btn'>4.8</button></div>
+        <div><button onclick='show_mark_only("0407")' class='btn'>4.7</button></div>
+        <div><button onclick='show_mark_only("0406")' class='btn'>4.6</button></div>
+        <div><button onclick='show_mark_only("0405")' class='btn'>4.5</button></div>
+        <div><button onclick='show_mark_only("0404")' class='btn'>4.4</button></div>
+        <div><button onclick='show_mark_only("0403")' class='btn'>4.3</button></div>
+        <div><button onclick='show_mark_only("0402")' class='btn'>4.2</button></div>
+        <div><button onclick='show_mark_only("0401")' class='btn'>4.1</button></div>
+        <div><button onclick='show_mark_only("0331")' class='btn'>3.31</button></div>
+        <div><button onclick='show_mark_only("0330")' class='btn'>3.30</button></div>
+        <div><button onclick='show_mark_only("0329")' class='btn'>3.29</button></div>
+        <div><button onclick='show_mark_only("0328")' class='btn'>3.28</button></div>
+        <div><button onclick='show_all()' class='btn'>3.28~</button></div>
 
-    </div>
-	<script>
-	var map = new BMapGL.Map('container');
-	map.centerAndZoom(new BMapGL.Point(121.422,30.993), 12);
-	map.enableScrollWheelZoom(true);
-	var myGeo = new BMapGL.Geocoder();
-	var myIcon = new BMapGL.Icon("../img/poi-icon-s.png", new BMapGL.Size(20, 22));
-		
-	function show_mark_only(date){
-		map.clearOverlays();
-		show_mark(date);
-	}	
-	function show_mark(date){
-		$.get("sh" + date + ".csv", function(data) {
-		//$.get("data.csv", function(data) {
-		var adds = data.split('\n');
-		console.log(adds);
+        </div>
+        <script>
+        /* global BMapGL */
 
-		var index = 0;
-		for (index = 0; index < adds.length; index++) {
-			var add = adds[index];
-			geocodeSearch(add);
-		}
-		function geocodeSearch(add){
-		    myGeo.getPoint(add, function(point){
-			if (point) {
-			    var address = new BMapGL.Point(point.lng, point.lat);
-			    addMarker(address,new BMapGL.Label(add,{offset:new BMapGL.Size(10,-10)}));
-			}
-		    }, "上海市");
-		}
-		// 编写自定义函数,创建标注
-		function addMarker(point,label){
-		//function addMarker(point){
-			var marker = new BMapGL.Marker(point, {icon: myIcon});
-			map.addOverlay(marker);
-			marker.setLabel(label);
-		}
-	  });
-		
-	}
-	function show_all(){
-		map.clearOverlays();
-		show_mark("0407");
-		show_mark("0406");
-		show_mark("0405");
-		show_mark("0404");
-		show_mark("0403");
-		show_mark("0402");
-		show_mark("0401");
+        /* global mapv */
 
-		show_mark("0331");
-		show_mark("0330");
-		show_mark("0329");
-		show_mark("0328");
+        /* global mapvgl */
 
-	}
+        /* global initMap */
 
-	</script>
-</body>
+        /* global whiteStyle */
+
+        var map = initMap({
+            tilt: 10,
+            center: [121.422,30.993],
+            zoom: 12,
+        });
+        function initMap(options) {
+            options = Object.assign({
+                tilt: 60,
+                heading: 0
+            }, options);
+            var map = new BMapGL.Map('map_container');
+            map.enableKeyboard();
+            map.enableScrollWheelZoom();
+            map.enableInertialDragging();
+            map.enableContinuousZoom();
+
+            if (options.center && options.zoom) {
+                map.centerAndZoom(new BMapGL.Point(options.center[0], options.center[1]), options.zoom);
+            }
+
+            map.setTilt(options.tilt);
+            map.setHeading(options.heading);
+            return map;
+        }
+        var data = new Array();    
+        function read_data(filename){
+            var pts = []
+            $.get(filename, function(geojson) {
+                  var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+                  darray = geojsonDataSet._data
+                  var data_len = darray.length
+                  for (var j = 0; j < data_len; j++) {
+                      pts.push({
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]]
+                        },
+                        properties: {
+                            icon: [
+                                '../img/poi-icon-s.png'
+                            ][0],
+                            width: 20,
+                            height: 22
+                        }
+                    });
+                  }
+            });
+            return pts
+        }
+
+            
+        var view = new mapvgl.View({
+            map: map
+        });
+        var clusterLayer = new mapvgl.ClusterLayer({
+            minSize: 30, // 聚合点显示的最小直径
+            maxSize: 50, // 聚合点显示的最大直径
+            clusterRadius: 150, // 聚合范围半径
+            gradient: {0: 'blue', 0.5: 'green', 1.0: 'red'}, // 聚合点颜色梯度
+            maxZoom: 15, // 聚合的最大级别，当地图放大级别高于此值将不再聚合
+            minZoom: 5, // 聚合的最小级别，当地图放大级别低于此值将不再聚合
+            // 是否显示文字
+            showText: true,
+            // 开始聚合的最少点数，点数多于此值才会被聚合
+            minPoints: 5,
+            // 设置文字样式
+            textOptions: {
+                fontSize: 12,
+                color: 'white',
+                // 格式化数字显示
+                format: function (count) {
+                    return count >= 10000 ? Math.round(count / 1000) + 'k'
+                    : count >= 1000 ? Math.round(count / 100) / 10 + 'k' : count;
+                }
+            },
+            enablePicked: true,
+            onClick(e) {
+                if (e.dataItem) {
+                    // 可通过dataItem下面的children属性拿到被聚合的所有点
+                    console.log(e.dataItem);
+                }
+            }
+        });
+
+        function show_mark_only(date){
+            view.removeAllLayers();
+            show_mark(data[date]);
+        }
+        function show_mark(dd){
+            view.addLayer(clusterLayer);
+            clusterLayer.setData(dd);
+        }
+        init_data();
+        function init_data(){
+                data['0408'] = read_data("../data2/sh0408.geojson");
+        }
+        window.run = function () {show_mark_only("0408")}
+        setTimeout(function () {
+            run();
+        }, 1500);
+        </script>
+    </body>
 </html>
