@@ -130,7 +130,7 @@
         function show_mark(date){
             data = init_data("../../data2/sh" + date + ".geojson");
             console.log(data);
-            setTimeout(function(){show_layer()},10);
+            setTimeout(() => {show_layer()},10);
         }
         function show_layer(){
             view.addLayer(clusterLayer);
