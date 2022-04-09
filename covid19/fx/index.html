@@ -218,7 +218,9 @@
         function show_layer(){
 
         }
-         window.onload = show_mark_only("0408");
+         data.done(function() {
+             show_mark_only("0408");
+         });
         </script>
     </body>
 </html>
