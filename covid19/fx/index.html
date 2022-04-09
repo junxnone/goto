@@ -131,7 +131,7 @@
         function show_mark(date){
             data = init_data("../../data2/sh" + date + ".geojson");
             view.addLayer(clusterLayer);
-            clusterLayer.setData(data);
+            setTimeout(clusterLayer.setData(data), 1000);
         }
         </script>
     </body>
