@@ -64,15 +64,14 @@
             map.setHeading(options.heading);
             return map;
         }
-            
+        var data = []    
         async function init_data(filename){
-            var pts = []
             $.get(filename, function(geojson) {
                   var geojsonDataSet = mapv.geojson.getDataSet(geojson);
                   darray = geojsonDataSet._data
                   var data_len = darray.length
                   for (var j = 0; j < data_len; j++) {
-                      pts.push({
+                      data.push({
                         geometry: {
                             type: 'Point',
                             coordinates: [darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]]
@@ -87,7 +86,6 @@
                     });
                   }
             });
-            return pts
         }
     
         var view = new mapvgl.View({
@@ -128,7 +126,7 @@
             show_mark(date);
         }
         function show_mark(date){
-            data = init_data("../../data2/sh" + date + ".geojson").then((res)=>{show_layer()});
+            init_data("../../data2/sh" + date + ".geojson").then((res)=>{show_layer()});
         }
         function show_layer(){
             view.addLayer(clusterLayer);
