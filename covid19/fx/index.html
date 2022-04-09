@@ -72,7 +72,7 @@
                   darray = geojsonDataSet._data
                   var data_len = darray.length
                   for (var j = 0; j < data_len; j++) {
-                      data.push({
+                      pts.push({
                         geometry: {
                             type: 'Point',
                             coordinates: [darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]]
@@ -87,6 +87,7 @@
                     });
                   }
             });
+            return pts
         }
 
         var view = new mapvgl.View({
@@ -98,8 +99,7 @@
             show_mark(date);
         }
         function show_mark(date){
-            var data = [];
-            init_data("../../data2/sh" + date + ".geojson");
+            var data = init_data("../../data2/sh" + date + ".geojson");
             var clusterLayer = new mapvgl.ClusterLayer({
                 minSize: 30, // 聚合点显示的最小直径
                 maxSize: 50, // 聚合点显示的最大直径
