@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=2.0&ak=TgV2QFgm0rUs6MM5ZujGFvVUiyQUWhjD"></script>
     <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://mapv.baidu.com/build/mapv.min.js"></script>
 
     <title>SH 奉贤 疫情趋势</title>
     <style>
@@ -104,33 +105,20 @@
 		show_mark(date);
 	}	
 	function show_mark(date){
-		$.get("../fx" + date + ".csv", function(data) {
-		//$.get("data.csv", function(data) {
-		var adds = data.split('\n');
-		console.log(adds);
-
-		var index = 0;
-		for (index = 0; index < adds.length; index++) {
-			var add = "奉贤区 " + adds[index];
-			geocodeSearch(add);
-		}
-		function geocodeSearch(add){
-		    myGeo.getPoint(add, function(point){
-			if (point) {
-			    var address = new BMapGL.Point(point.lng, point.lat);
-			    addMarker(address,new BMapGL.Label(add,{offset:new BMapGL.Size(10,-10)}));
-			}
-		    }, "上海市");
-		}
-		// 编写自定义函数,创建标注
-		function addMarker(point,label){
-		//function addMarker(point){
-			var marker = new BMapGL.Marker(point, {icon: myIcon});
-			map.addOverlay(marker);
-			marker.setLabel(label);
-		}
-	  });
 		
+		var markers = []
+		$.get('../data2/fx' + date + ".geojson', function(geojson) {
+
+			var geojsonDataSet = mapv.geojson.getDataSet(geojson);
+			darray = geojsonDataSet._data
+			var data_len = darray.length
+			for (var j = 0; j < data_len; j++) {
+				var pt = new BMapGL.Point(darray[j].geometry.coordinates[0], darray[j].geometry.coordinates[1]);
+				points.push(new BMapGL.Marker(pt, {icon: myIcon}););
+			}
+		});
+		
+		var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
 	}
 	function show_all(){
 		map.clearOverlays();
