@@ -1,0 +1,31 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "addr": "金山区 板桥西路1709号  " }, "geometry": { "type": "Point", "coordinates": [ 121.321916971530129, 30.733035405517494 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 东平北路1558弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.330369730657765, 30.754793842194289 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 枫阳路1811弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.002309033796166, 30.904513043343766 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 高楼村  " }, "geometry": { "type": "Point", "coordinates": [ 121.340728117722904, 30.856654315098886 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 海芙路199弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.352142885748364, 30.756580396654989 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 红光村  " }, "geometry": { "type": "Point", "coordinates": [ 121.366986845407283, 30.853742730242242 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 红旗新村  " }, "geometry": { "type": "Point", "coordinates": [ 121.163690696630312, 30.900870794048185 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 后岗村  " }, "geometry": { "type": "Point", "coordinates": [ 121.262529275621077, 30.852310892491261 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 林珍路59弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.33371675338698, 30.906005366113202 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 龙皓路1588弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.333017422547456, 30.758701269003581 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 龙皓路1738弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.330235550044165, 30.756129997062803 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 龙胜路400号  " }, "geometry": { "type": "Point", "coordinates": [ 121.346488771297302, 30.73092255404233 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 龙轩路789弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.349908440712682, 30.758038557488302 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 龙跃村  " }, "geometry": { "type": "Point", "coordinates": [ 121.258756841631907, 30.823042543897326 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 蒙山路1090弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.350609119010471, 30.733301894957894 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 南亭公路6158号  " }, "geometry": { "type": "Point", "coordinates": [ 121.332903427578245, 30.889304032078712 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 清泉路79号  " }, "geometry": { "type": "Point", "coordinates": [ 121.18428956061851, 30.897533711453388 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 山德路29号  " }, "geometry": { "type": "Point", "coordinates": [ 121.371616532344603, 30.786997900086181 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 山龙街145号  " }, "geometry": { "type": "Point", "coordinates": [ 121.345192606276939, 30.736408839951309 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 水库村  " }, "geometry": { "type": "Point", "coordinates": [ 121.403017070937537, 30.830168371375045 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 亭卫南路399弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.37232702783831, 30.739447031635212 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 卫零北路800弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.338613955705171, 30.756450886154546 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 学府路1321号  " }, "geometry": { "type": "Point", "coordinates": [ 121.324409859150862, 30.74688690351195 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 油车村  " }, "geometry": { "type": "Point", "coordinates": [ 121.298857918241737, 30.858189551713707 ] } },
+{ "type": "Feature", "properties": { "addr": "金山区 周栅村  " }, "geometry": { "type": "Point", "coordinates": [ 121.271458701881897, 30.87818163146785 ] } }
+]
+}
