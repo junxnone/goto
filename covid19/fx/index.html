@@ -41,7 +41,7 @@
            position: fixed;
            top: 10px;
            right: 10px;
-           width: 100px;
+           width: 50px;
            height: 480px;
            line-height: 30px;
            text-align: center;
@@ -75,10 +75,10 @@
           display: flex;
           align-items: center;
           justify-content: flex-end;
-          padding: 10px;
+          padding: 0px;
       }
       .btn{ 
-          width: 100px;
+          width: 50px;
           height: 35px;
           color: #fff;
           font-size: 14px;;
@@ -214,6 +214,23 @@
         function show_mark(dd){
             view.addLayer(clusterLayer);
             clusterLayer.setData(dd);
+        }
+        function show_all(){
+            view.addLayer(clusterLayer);
+            clusterLayer.setData(data['0408']);
+            clusterLayer.setData(data['0407']);
+            clusterLayer.setData(data['0406']);
+            clusterLayer.setData(data['0405']);
+            clusterLayer.setData(data['0404']);
+            clusterLayer.setData(data['0403']);
+            clusterLayer.setData(data['0402']);
+            clusterLayer.setData(data['0401']);
+
+            clusterLayer.setData(data['0331']);
+            clusterLayer.setData(data['0330']);
+            clusterLayer.setData(data['0329']);
+            clusterLayer.setData(data['0328']);
+
         }
         init_data();
         function init_data(){
