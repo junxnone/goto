@@ -2,7 +2,6 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" >
-        <title>MapVGL</title>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
         <style>
@@ -24,7 +23,7 @@
         <script src="//mapv.baidu.com/build/mapv.min.js"></script>
         <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.146/dist/mapvgl.min.js"></script>
         <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <title>SH 疫情趋势</title>
+    <title>SH 奉贤疫情趋势</title>
     <style>
        body,html{
            width: 100%;
@@ -217,6 +216,7 @@
             clusterLayer.setData(dd);
         }
         function show_all(){
+            view.removeAllLayers();
             view.addLayer(clusterLayer);
             clusterLayer.setData(data_all);
         }
@@ -235,12 +235,7 @@
                 data['0330'] = read_data("../../data2/shfxq0330.geojson");
                 data['0329'] = read_data("../../data2/shfxq0329.geojson");
                 data['0328'] = read_data("../../data2/shfxq0328.geojson");
-                data_all = [...data['0408'],...data['0407'],
-                            ...data['0406'],...data['0405'],
-                            ...data['0404'],...data['0403'],
-                            ...data['0402'],...data['0401'],
-                            ...data['0331'],...data['0330'],
-                            ...data['0329'],...data['0328']]
+                for(date in data) data_all=[...data_all,...data[date]];
         }
         window.run = function () {show_mark_only("0408")}
         setTimeout(function () {
