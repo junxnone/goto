@@ -23,7 +23,7 @@
         <script src="//mapv.baidu.com/build/mapv.min.js"></script>
         <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.146/dist/mapvgl.min.js"></script>
         <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <title>SH 疫情趋势</title>
+    <title>SH 疫情分布</title>
     <style>
        body,html{
            width: 100%;
@@ -146,7 +146,9 @@
             map.setHeading(options.heading);
             return map;
         }
-        var data = new Array();    
+        var data = new Array();
+        var data_all = new Array();
+
         function read_data(filename){
             var pts = []
             $.get(filename, function(geojson) {
@@ -214,9 +216,22 @@
             view.addLayer(clusterLayer);
             clusterLayer.setData(dd);
         }
+        function show_all(){
+            view.removeAllLayers();
+            view.addLayer(clusterLayer);
+            clusterLayer.setData(data_all);
+        }
         init_data();
         function init_data(){
                 data['0408'] = read_data("../data2/sh0408.geojson");
+                data['0407'] = read_data("../data2/sh0407.geojson");
+
+                setTimeout(function () {
+                    summary_data()},
+                    2000);
+        }
+        function summary_data(){
+            for(date in data) data_all=[...data_all,...data[date]];
         }
         window.run = function () {show_mark_only("0408")}
         setTimeout(function () {
