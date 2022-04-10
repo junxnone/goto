@@ -147,7 +147,8 @@
             map.setHeading(options.heading);
             return map;
         }
-        var data = new Array();    
+        var data = new Array();   
+        var data_all = new Array();
         function read_data(filename){
             var pts = []
             $.get(filename, function(geojson) {
@@ -217,20 +218,7 @@
         }
         function show_all(){
             view.addLayer(clusterLayer);
-            clusterLayer.setData(data['0408']);
-            clusterLayer.setData(data['0407']);
-            clusterLayer.setData(data['0406']);
-            clusterLayer.setData(data['0405']);
-            clusterLayer.setData(data['0404']);
-            clusterLayer.setData(data['0403']);
-            clusterLayer.setData(data['0402']);
-            clusterLayer.setData(data['0401']);
-
-            clusterLayer.setData(data['0331']);
-            clusterLayer.setData(data['0330']);
-            clusterLayer.setData(data['0329']);
-            clusterLayer.setData(data['0328']);
-
+            clusterLayer.setData(data_all);
         }
         init_data();
         function init_data(){
@@ -247,7 +235,12 @@
                 data['0330'] = read_data("../../data2/shfxq0330.geojson");
                 data['0329'] = read_data("../../data2/shfxq0329.geojson");
                 data['0328'] = read_data("../../data2/shfxq0328.geojson");
-
+                data_all = [...data['0408'],...data['0407'],
+                            ...data['0406'],...data['0405'],
+                            ...data['0404'],...data['0403'],
+                            ...data['0402'],...data['0401'],
+                            ...data['0331'],...data['0330'],
+                            ...data['0329'],...data['0328']]
         }
         window.run = function () {show_mark_only("0408")}
         setTimeout(function () {
