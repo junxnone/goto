@@ -236,8 +236,11 @@
                 data['0329'] = read_data("../../data2/shfxq0329.geojson");
                 data['0328'] = read_data("../../data2/shfxq0328.geojson");
                 setTimeout(function () {
-                    for(date in data) data_all=[...data_all,...data[date]];}
+                    summary_data()},
                     2000);
+        }
+        function summary_data(){
+            for(date in data) data_all=[...data_all,...data[date]];
         }
         window.run = function () {show_mark_only("0408")}
         setTimeout(function () {
