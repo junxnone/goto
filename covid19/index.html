@@ -177,10 +177,10 @@
             iniregion('长宁区');
         }
         function drawregions(){
+            map.clearOverlays();
             for(var j = 0; j< all_regions.length; j++){
             	var hole = new BMapGL.Polygon(all_regions[j], {
                     fillColor: '',
-                    fillOpacity: 0.2,
                     strokeStyle: 'dashed'
                 });
                 map.addOverlay(hole);
@@ -289,7 +289,7 @@
         function summary_data(){
             for(date in data) data_all=[...data_all,...data[date]];
         }
-        window.run = function () {show_mark_only("0412")}
+        window.run = function () {show_mark("0412")}
         setTimeout(function () {
             run();
         }, 3000);
