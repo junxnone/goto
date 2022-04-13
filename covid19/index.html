@@ -150,33 +150,41 @@
             map.setHeading(options.heading);
             return map;
         }
-        var bd = new BMapGL.Boundary();    
-        function drawregion(region){
+        var bd = new BMapGL.Boundary();
+        var all_regions = new Array();
+        initregions();
+        function iniregion(region){
             bd.get(region, function (rs) {
-                var hole = new BMapGL.Polygon(rs.boundaries, {
-                    fillColor: '',
-                    fillOpacity: 0.1,
-                    strokeStyle:dashed
-                });
-                map.addOverlay(hole);
+                all_regions.push(rs.boundaries[0])
             });
         }
-        drawregion('嘉定区');
-        drawregion('奉贤区');
-        drawregion('宝山区');
-        drawregion('崇明区');
-        drawregion('徐汇区');
-        drawregion('普陀区');
-        drawregion('杨浦区');
-        drawregion('松江区');
-        drawregion('浦东新区');
-        drawregion('虹口区');
-        drawregion('金山区');
-        drawregion('闵行区');
-        drawregion('青浦区');
-        drawregion('静安区');
-        drawregion('黄埔区');
-        drawregion('长宁区');
+        function initregions(){
+            iniregion('嘉定区');
+            iniregion('奉贤区');
+            iniregion('宝山区');
+            iniregion('崇明区');
+            iniregion('徐汇区');
+            iniregion('普陀区');
+            iniregion('杨浦区');
+            iniregion('松江区');
+            iniregion('浦东新区');
+            iniregion('虹口区');
+            iniregion('金山区');
+            iniregion('闵行区');
+            iniregion('青浦区');
+            iniregion('静安区');
+            iniregion('黄埔区');
+            iniregion('长宁区');
+        }
+        function drawregions(){
+            for(var j = 0; j< all_regions.length; j++){
+            	var hole = new BMapGL.Polygon(all_regions[j], {
+                    fillColor: 'blue',
+                    fillOpacity: 0.2
+                });
+                map.addOverlay(hole);
+            }
+        }
         var data = new Array();
         var data_all = new Array();
 
@@ -244,10 +252,12 @@
             show_mark(data[date]);
         }
         function show_mark(dd){
+            drawregions();
             view.addLayer(clusterLayer);
             clusterLayer.setData(dd);
         }
         function show_all(){
+            drawregions();
             view.removeAllLayers();
             view.addLayer(clusterLayer);
             clusterLayer.setData(data_all);
