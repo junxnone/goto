@@ -150,41 +150,7 @@
             map.setHeading(options.heading);
             return map;
         }
-        var bd = new BMapGL.Boundary();
-        var all_regions = new Array();
-        initregions();
-        function iniregion(region){
-            bd.get(region, function (rs) {
-                all_regions.push(rs.boundaries[0])
-            });
-        }
-        function initregions(){
-            iniregion('嘉定区');
-            iniregion('奉贤区');
-            iniregion('宝山区');
-            iniregion('崇明区');
-            iniregion('徐汇区');
-            iniregion('普陀区');
-            iniregion('杨浦区');
-            iniregion('松江区');
-            iniregion('浦东新区');
-            iniregion('虹口区');
-            iniregion('金山区');
-            iniregion('闵行区');
-            iniregion('青浦区');
-            iniregion('静安区');
-            iniregion('黄埔区');
-            iniregion('长宁区');
-        }
-        function drawregions(){
-            for(var j = 0; j< all_regions.length; j++){
-            	var hole = new BMapGL.Polygon(all_regions[j], {
-                    fillColor: '',
-                    strokeStyle: 'dashed'
-                });
-                map.addOverlay(hole);
-            }
-        }
+
         var data = new Array();
         var data_all = new Array();
 
@@ -290,9 +256,6 @@
         setTimeout(function () {
             run();
         }, 3000);
-        setTimeout(function () {
-            drawregions();
-        }, 20000);
         </script>
     </body>
 </html>
