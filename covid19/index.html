@@ -150,6 +150,33 @@
             map.setHeading(options.heading);
             return map;
         }
+        var bd = new BMapGL.Boundary();    
+        function drawregion(region){
+            bd.get(region, function (rs) {
+                var hole = new BMapGL.Polygon(rs.boundaries, {
+                    fillColor: '',
+                    fillOpacity: 0.1,
+                    strokeStyle:dashed
+                });
+                map.addOverlay(hole);
+            });
+        }
+        drawregion('嘉定区');
+        drawregion('奉贤区');
+        drawregion('宝山区');
+        drawregion('崇明区');
+        drawregion('徐汇区');
+        drawregion('普陀区');
+        drawregion('杨浦区');
+        drawregion('松江区');
+        drawregion('浦东新区');
+        drawregion('虹口区');
+        drawregion('金山区');
+        drawregion('闵行区');
+        drawregion('青浦区');
+        drawregion('静安区');
+        drawregion('黄埔区');
+        drawregion('长宁区');
         var data = new Array();
         var data_all = new Array();
 
