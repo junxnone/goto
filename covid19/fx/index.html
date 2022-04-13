@@ -146,6 +146,25 @@
             map.setHeading(options.heading);
             return map;
         }
+        function drawBoundary(region){
+            var bdary = new BMapGL.Boundary();
+            bdary.get(region,function(rs){
+                var EN_JW = "180, 90;";
+                var NW_JW = "-180, 90;";
+                var WS_JW = "-180, -90;";
+                var SE_JW = "180, -90;";
+                var ply_1 = new BMapGL.Polygon(rs.boundaries[0] + SE_JW + SE_JW + WS_JW + NW_JW + EN_JW + SE_JW, {
+                    strokeColor: "none",
+                    fillColor: "rgba(0,0,0,0.5)",
+                    fillOpacity:1,
+                    strokeOpacity:0.5});
+                map.addOverlay(ply_1);
+                
+                var ply_2 = new BMap.Polygon(rs.boundaries[0], {strokeWeight:2, stokeColor:"#999", fillColor:""});
+                map.addOverlay(ply_2);
+            });
+        }
+        drawBoundary("上海 奉贤区")
         var data = new Array();   
         var data_all = new Array();
         function read_data(filename){
