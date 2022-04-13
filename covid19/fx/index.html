@@ -146,15 +146,23 @@
             map.setHeading(options.heading);
             return map;
         }
-        function drawBoundary(region, f_color, opc){
-            var bdary = new BMapGL.Boundary();
-            bdary.get(region,function(rs){
-                var ply_2 = new BMap.Polygon(rs.boundaries[0], {strokeWeight:2, stokeColor:"#999", fillColor:f_color, fillOpacity: opc});
-                map.addOverlay(ply_2);
+        var bd = new BMapGL.Boundary();
+        var allloc = new Array();
+
+        bd.get('上海', function (rs) {
+            allloc.push(rs.boundaries[0]);
+        });
+
+        setTimeout(function() {bd.get('奉贤区', function (rs) {
+            allloc.push(rs.boundaries[0]);
+            var hole = new BMapGL.Polygon(allloc, {
+                fillColor: 'blue',
+                fillOpacity: 0.2
             });
-        }
-        drawBoundary("上海 奉贤区", "", 0.1);
-        drawBoundary("上海", "black", 0.1);
+            map.addOverlay(hole);
+        });},2000);
+
+
         var data = new Array();   
         var data_all = new Array();
         function read_data(filename){
