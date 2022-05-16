@@ -137,6 +137,7 @@
         <div id='result2'>
         <div>每日</div>
         <div><button onclick='show_all()' class='btn'>3.28~</button></div>
+        <div><button onclick='show_mark_only("0515")' class='btn'>5.15</button></div>
         <div><button onclick='show_mark_only("0514")' class='btn'>5.14</button></div>
         <div><button onclick='show_mark_only("0513")' class='btn'>5.13</button></div>
         <div><button onclick='show_mark_only("0512")' class='btn'>5.12</button></div>
@@ -301,6 +302,7 @@
         }
         init_data();
         function init_data(){
+                data['0515'] = read_data("../data2/sh0515.geojson");
                 data['0514'] = read_data("../data2/sh0514.geojson");
                 data['0513'] = read_data("../data2/sh0513.geojson");
                 data['0512'] = read_data("../data2/sh0512.geojson");
@@ -357,7 +359,7 @@
         function summary_data(){
             for(date in data) data_all=[...data_all,...data[date]];
         }
-        window.run = function () {show_mark_only("0514")}
+        window.run = function () {show_mark_only("0515")}
         setTimeout(function () {
             run();
         }, 3000);
