@@ -137,6 +137,10 @@
         <div id='result2'>
         <div>每日</div>
         <div><button onclick='show_all()' class='btn'>3.28~</button></div>
+        <div><button onclick='show_mark_only("0522")' class='btn'>5.22</button></div>
+        <div><button onclick='show_mark_only("0521")' class='btn'>5.21</button></div>
+        <div><button onclick='show_mark_only("0520")' class='btn'>5.20</button></div>
+        <div><button onclick='show_mark_only("0519")' class='btn'>5.19</button></div>
         <div><button onclick='show_mark_only("0518")' class='btn'>5.18</button></div>
         <div><button onclick='show_mark_only("0517")' class='btn'>5.17</button></div>
         <div><button onclick='show_mark_only("0516")' class='btn'>5.16</button></div>
@@ -160,6 +164,8 @@
         <div><button onclick='show_mark_only("0428")' class='btn'>4.28</button></div>
         <div><button onclick='show_mark_only("0427")' class='btn'>4.27</button></div>
         <div><button onclick='show_mark_only("0426")' class='btn'>4.26</button></div>
+        </div>
+        <div id='result'>
         <div><button onclick='show_mark_only("0425")' class='btn'>4.25</button></div>
         <div><button onclick='show_mark_only("0424")' class='btn'>4.24</button></div>
         <div><button onclick='show_mark_only("0423")' class='btn'>4.23</button></div>
@@ -169,8 +175,6 @@
         <div><button onclick='show_mark_only("0419")' class='btn'>4.19</button></div>
         <div><button onclick='show_mark_only("0418")' class='btn'>4.18</button></div>
         <div><button onclick='show_mark_only("0417")' class='btn'>4.17</button></div>
-        </div>
-        <div id='result'>
         <div><button onclick='show_mark_only("0416")' class='btn'>4.16</button></div>
         <div><button onclick='show_mark_only("0415")' class='btn'>4.15</button></div>
         <div><button onclick='show_mark_only("0414")' class='btn'>4.14</button></div>
@@ -305,6 +309,10 @@
         }
         init_data();
         function init_data(){
+                data['0522'] = read_data("../data2/sh0522.geojson");
+                data['0521'] = read_data("../data2/sh0521.geojson");
+                data['0520'] = read_data("../data2/sh0520.geojson");
+                data['0519'] = read_data("../data2/sh0519.geojson");
                 data['0518'] = read_data("../data2/sh0518.geojson");
                 data['0517'] = read_data("../data2/sh0517.geojson");
                 data['0516'] = read_data("../data2/sh0516.geojson");
@@ -365,7 +373,7 @@
         function summary_data(){
             for(date in data) data_all=[...data_all,...data[date]];
         }
-        window.run = function () {show_mark_only("0518")}
+        window.run = function () {show_mark_only("0522")}
         setTimeout(function () {
             run();
         }, 3000);
