@@ -137,6 +137,12 @@
         <div id='result2'>
         <div>每日</div>
         <div><button onclick='show_all()' class='btn'>3.28~</button></div>
+        <div><button onclick='show_mark_only("0528")' class='btn'>5.28</button></div>
+        <div><button onclick='show_mark_only("0527")' class='btn'>5.27</button></div>
+        <div><button onclick='show_mark_only("0526")' class='btn'>5.26</button></div>
+        <div><button onclick='show_mark_only("0525")' class='btn'>5.25</button></div>
+        <div><button onclick='show_mark_only("0524")' class='btn'>5.24</button></div>
+        <div><button onclick='show_mark_only("0523")' class='btn'>5.23</button></div>
         <div><button onclick='show_mark_only("0522")' class='btn'>5.22</button></div>
         <div><button onclick='show_mark_only("0521")' class='btn'>5.21</button></div>
         <div><button onclick='show_mark_only("0520")' class='btn'>5.20</button></div>
@@ -309,6 +315,12 @@
         }
         init_data();
         function init_data(){
+                data['0528'] = read_data("../data2/sh0528.geojson");
+                data['0527'] = read_data("../data2/sh0527.geojson");
+                data['0526'] = read_data("../data2/sh0526.geojson");
+                data['0525'] = read_data("../data2/sh0525.geojson");
+                data['0524'] = read_data("../data2/sh0524.geojson");
+                data['0523'] = read_data("../data2/sh0523.geojson");
                 data['0522'] = read_data("../data2/sh0522.geojson");
                 data['0521'] = read_data("../data2/sh0521.geojson");
                 data['0520'] = read_data("../data2/sh0520.geojson");
@@ -373,7 +385,7 @@
         function summary_data(){
             for(date in data) data_all=[...data_all,...data[date]];
         }
-        window.run = function () {show_mark_only("0522")}
+        window.run = function () {show_mark_only("0528")}
         setTimeout(function () {
             run();
         }, 3000);
