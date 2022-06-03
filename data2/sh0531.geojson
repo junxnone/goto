@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 海鹏路301弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.680730914263762, 31.295363983048894 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 海阳路1040弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.513081324733719, 31.162207475729016 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 樱花路802弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.567473903023995, 31.213807021168357 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 羽山路383弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.550383281374465, 31.239109425236762 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 黄浦区 广东路527号  " }, "geometry": { "type": "Point", "coordinates": [ 121.48796151369018, 31.237913533025136 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 芷江西路285弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.466751846870466, 31.263678757293864 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 长宁区 北翟路980弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.366313295935896, 31.230725584579943 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 长宁区 平武路150弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.437995829868356, 31.215045377362138 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 虹口区 虹镇老街251号  " }, "geometry": { "type": "Point", "coordinates": [ 121.510638382899344, 31.273004635536964 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 虹口区 四平路621弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.500505496746797, 31.277798353549326 ] } }
+]
+}
