@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 潍坊路335弄3支弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.537886953425158, 31.235615027407125 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 樱花路801弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.567035979087876, 31.214397826976995 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 闻喜路590号  " }, "geometry": { "type": "Point", "coordinates": [ 121.463023070529104, 31.314716038686427 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 芷江西路220弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.468844180064309, 31.263244143744132 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 长宁区 东诸安浜路180弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.431390230131285, 31.225719777878318 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 虹口区 中山北一路131弄1支弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.483567587033946, 31.278886488953123 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 虹口区 广中路366弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.480457204205649, 31.283761454588326 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 青浦区 崧泽大道333号  " }, "geometry": { "type": "Point", "coordinates": [ 121.308617558454898, 31.196205058244473 ] } }
+]
+}
