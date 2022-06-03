@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 大同路1436号  " }, "geometry": { "type": "Point", "coordinates": [ 121.571740764365842, 31.338082361334276 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 梅花新邨  " }, "geometry": { "type": "Point", "coordinates": [ 121.767974345392815, 31.056793261284955 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 银霄路39弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.565726159823782, 31.218253492245989 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 黄浦区 鲁班路562弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.483005607106918, 31.204439795775912 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 黄浦区 巨鹿路383弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.465186639349881, 31.228627306896506 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 沪太路320号  " }, "geometry": { "type": "Point", "coordinates": [ 121.458042864781788, 31.261493167756036 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 武定西路1189号  " }, "geometry": { "type": "Point", "coordinates": [ 121.442094977571486, 31.23269088723708 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 芷江西路593弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.461343239225442, 31.263127464478224 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 虹口区 中山北一路131弄1支弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.483567587033946, 31.278886488953123 ] } }
+]
+}
