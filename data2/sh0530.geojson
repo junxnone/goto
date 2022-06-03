@@ -1,0 +1,26 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 东方路268号  " }, "geometry": { "type": "Point", "coordinates": [ 121.527735921501318, 31.2426420538659 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 康沈路1632号  " }, "geometry": { "type": "Point", "coordinates": [ 121.584859707864112, 31.120077939878794 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 临沂路101弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.521040491213228, 31.201323022068365 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 申启路涵桥路交界口工地生活区  " }, "geometry": { "type": "Point", "coordinates": [ 121.635141999462931, 31.28902660991924 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 樱花路802弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.567473903023995, 31.213807021168357 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 浦东新区 玉兰路60弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.535203625036303, 31.216555718920326 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 会文路50号  " }, "geometry": { "type": "Point", "coordinates": [ 121.479465025769883, 31.258019902924843 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 普善路铁路新村30号  " }, "geometry": { "type": "Point", "coordinates": [ 121.461334435831446, 31.262183993051686 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 延平路220弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.446561711889302, 31.236666139328616 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 芷江西路220弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.468844180064309, 31.263244143744132 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 静安区 中兴路1394弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.467002204616108, 31.258264078270283 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 长宁区 剑河路404弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.374645259202055, 31.220249089299745 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 虹口区 大连西路205号  " }, "geometry": { "type": "Point", "coordinates": [ 121.498856656983222, 31.281988951620836 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 虹口区 虹镇老街251号  " }, "geometry": { "type": "Point", "coordinates": [ 121.510638382899344, 31.273004635536964 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 虹口区 四川北路1999弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.490374317374716, 31.26948364850286 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 杨浦区 军工路1300号  " }, "geometry": { "type": "Point", "coordinates": [ 121.552326765345299, 31.311221151837529 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 杨浦区 控江五村  " }, "geometry": { "type": "Point", "coordinates": [ 121.536617288417361, 31.293492262078431 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 闵行区 梅陇二村  " }, "geometry": { "type": "Point", "coordinates": [ 121.417055519955809, 31.14070474980123 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 闵行区 杨家巷村  " }, "geometry": { "type": "Point", "coordinates": [ 121.308534016042458, 31.230214548177734 ] } },
+{ "type": "Feature", "properties": { "addr": "上海市 松江区 滨湖路585弄  " }, "geometry": { "type": "Point", "coordinates": [ 121.212683291008446, 31.047323349357871 ] } }
+]
+}
